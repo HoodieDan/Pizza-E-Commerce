@@ -146,4 +146,9 @@ aside {
    transform: translateX(0px);
   }
 }
+@media (max-width: 880px) {
+  .right-nav-links {
+    right: 10px;
+  }
+}
 </style>
