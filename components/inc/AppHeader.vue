@@ -46,7 +46,8 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+// eslint-disable-next-line semi
+import { mapMutations } from 'vuex';
 
 export default {
   name: 'AppHeader',

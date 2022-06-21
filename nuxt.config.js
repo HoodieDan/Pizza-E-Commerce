@@ -35,6 +35,10 @@ export default {
     '~/assets/css/styles.css'
   ],
 
+  js: [
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
+  ],
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
   ],
