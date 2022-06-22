@@ -1,6 +1,5 @@
 <template>
   <div class="home-page">
-    <SignInVue v-show="!signInOpen" />
     <SliderVue />
     <LocationsVue />
     <PizzasVue />
@@ -11,14 +10,16 @@
 <script>
 import { mapState } from 'vuex'
 import LocationsVue from '../components/Locations.vue'
-import SignInVue from '~/components/SignIn.vue'
 import SliderVue from '~/components/Slider.vue'
 import PizzasVue from '~/components/Pizzas.vue'
 import Drinks from '~/components/Drinks.vue'
 
 export default {
   name: 'IndexPage',
-  components: { SignInVue, SliderVue, LocationsVue, PizzasVue, Drinks },
+  components: { SliderVue, LocationsVue, PizzasVue, Drinks },
+  props: {
+    signInIsOpen: Boolean
+  },
   data () {
     return {
       ...mapState(['signInOpen'])
@@ -83,5 +84,13 @@ div.content {
 div.button {
   text-align: center;
   margin: 2% auto 2% auto;
+}
+@media (width:768px) {
+  div.home-page {
+    overflow-x: hidden;
+  }
+  div.card {
+    width: 230px !important;
+  }
 }
 </style>

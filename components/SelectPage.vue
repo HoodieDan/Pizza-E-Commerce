@@ -37,6 +37,44 @@
             <h5 class="brown semi-bold">
               Select Toppings
             </h5>
+            <div class="toppings">
+              <button class="topping">
+                <img src="../assets/images/onions.png" alt="onions">
+                <p class="brown">
+                  Onions
+                </p>
+              </button>
+              <button class="topping">
+                <img src="../assets/images/chicken.png" alt="onions">
+                <p class="brown">
+                  Chicken
+                </p>
+              </button>
+              <button class="topping">
+                <img src="../assets/images/sausage.png" alt="onions">
+                <p class="brown">
+                  Sausage
+                </p>
+              </button>
+              <button class="topping">
+                <img src="../assets/images/onions.png" alt="onions">
+                <p class="brown">
+                  Onions
+                </p>
+              </button>
+              <button class="topping">
+                <img src="../assets/images/chicken.png" alt="onions">
+                <p class="brown">
+                  Chicken
+                </p>
+              </button>
+              <button class="topping">
+                <img src="../assets/images/sausage.png" alt="onions">
+                <p class="brown">
+                  Sausage
+                </p>
+              </button>
+            </div>
           </div>
           <div class="total">
             <h6 class="brown">
@@ -47,6 +85,9 @@
             </h2>
           </div>
         </div>
+        <button class="btn add-to-cart">
+          ADD TO CART
+        </button>
       </div>
     </div>
   </div>
@@ -81,9 +122,11 @@ div.select-modal {
     width: 800px;
     height: 500px;
     background: #FFF;
-    margin: 100px auto;
+    margin: auto auto;
     display: flex;
     position: relative;
+    overflow-y: initial !important;
+    overflow-x: hidden;
 }
 div.backdrop {
     display: flex;
@@ -106,14 +149,45 @@ div.cont {
 .selected img {
     height: 100%;
     position: relative;
+    overflow-y: hidden;
 }
 .pizza-info {
     padding: 20px;
+    overflow-y: auto;
 }
 button.select {
     border: #5d3801 1px solid;
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
+}
+div.toppings {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+button.topping {
+  border: #5d3801 1px solid;
+  border-radius: 5px;
+  margin: 5px;
+  height: 95px;
+}
+.add-to-cart {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+@media (max-width: 768px) {
+  button.close-modal {
+    z-index: 100;
+  }
+  div.select-modal {
+    width: auto !important;
+    margin: auto 10px !important;
+  }
+  .selected img {
+    display: none;
+  }
 }
 </style>

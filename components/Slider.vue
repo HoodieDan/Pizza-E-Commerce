@@ -1,31 +1,48 @@
 <template>
-  <!-- Home carousel AD -->
-  <div class="carousel">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" />
-        <li data-target="#carouselExampleIndicators" data-slide-to="1" />
-        <li data-target="#carouselExampleIndicators" data-slide-to="2" />
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="../assets/images/home-ad.png" alt="First slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="../assets/images/home-ad.png" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="../assets/images/home-ad.png" alt="Third slide">
-        </div>
-      </div>
-    </div>
+  <div>
+    <b-carousel
+      id="carousel-1"
+      v-model="slide"
+      :interval="4000"
+      controls
+      indicators
+      background="#FFF"
+      img-width="1024"
+      img-height="480"
+      style="text-shadow: 1px 1px 2px #333;"
+      @sliding-start="onSlideStart"
+      @sliding-end="onSlideEnd"
+    >
+      <!-- Slide One -->
+      <b-carousel-slide img-src="../assets/images/home-ad.png" />
+
+      <!-- Slides two -->
+      <b-carousel-slide img-src="../assets/images/home-ad.png" />
+
+      <!-- Slides with image only -->
+      <b-carousel-slide img-src="../assets/images/home-ad.png" />
+    </b-carousel>
   </div>
 </template>
 
 <script>
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Slider'
+  name: 'Slider',
+  data () {
+    return {
+      slide: 0,
+      sliding: null
+    }
+  },
+  methods: {
+    onSlideStart (slide) {
+      this.sliding = true
+    },
+    onSlideEnd (slide) {
+      this.sliding = false
+    }
+  }
 }
 </script>
 

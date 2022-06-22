@@ -4,7 +4,7 @@
       Select Location
     </h3>
     <div class="row">
-      <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
+      <div class="branch col-lg-2 col-md-4 col-sm-6 col-xs-6">
         <button>
           <div class="card">
             <div class="card-header">
@@ -17,7 +17,7 @@
           </div>
         </button>
       </div>
-      <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
+      <div class="branch col-lg-2 col-md-4 col-sm-6 col-xs-6">
         <button>
           <div class="card">
             <div class="card-header">
@@ -30,7 +30,7 @@
           </div>
         </button>
       </div>
-      <div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
+      <div class="branch col-lg-2 col-md-4 col-sm-6 col-xs-6">
         <button>
           <div class="card">
             <div class="card-header">
@@ -66,17 +66,24 @@ button {
   padding: 0;
 }
 div.card {
-  width: 180px;
+  width: 100%;
 }
 div.create-pizza-container {
     justify-content: center;
 }
-@media (min-width: 769px) and (max-width: 992px) {
-  div.row {
-    justify-content: center;
+@media (min-width:993px) {
+  .col-lg-6 {
+  flex: 0 0 34%;
+  max-width: 34%;
+}
+  .col-lg-2 {
+      flex: 0 0 22%;
+      max-width: 22%;
   }
-  img.create-pizza {
-    transform: scale(0.8);
+}
+@media (min-width: 768px) {
+  .row {
+    justify-content: center;
   }
 }
 @media (max-width:768px) {
@@ -90,6 +97,17 @@ div.create-pizza-container {
   }
   div.row {
     justify-content: center;
+  }
+}
+@media (max-width: 575px) {
+    .branch {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width: 305px) {
+  img.create-pizza {
+    width: 200px;
   }
 }
 </style>

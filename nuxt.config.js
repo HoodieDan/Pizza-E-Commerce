@@ -36,7 +36,8 @@ export default {
   ],
 
   js: [
-    'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
+    'https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js',
+    'https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

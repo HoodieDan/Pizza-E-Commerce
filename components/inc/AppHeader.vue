@@ -35,29 +35,73 @@
       </ul>
     </div>
     <div class="right-nav-links">
+      <!-- Shopping cart -->
       <button class="btn">
         <i class="font-awesome fa-solid fa-cart-shopping" />
       </button>
-      <button class="btn" @click.prevent="toggleSignIn">
+      <!-- sign in -->
+      <button class="btn sign-in" @click.prevent="toggleSignIn">
         <span class="button-text">Sign In</span>
+        <i class="font-awesome sign-in-icon fa-solid fa-arrow-right-to-bracket" />
+      </button>
+      <!-- nav menu -->
+      <button
+        class="navbar-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        @click="toggleNav"
+      >
+        <span
+          class="toggler-icon top-bar"
+          :class="{ 'top-icon-animate': navIsOpen }"
+        />
+        <span
+          class="toggler-icon middle-bar"
+          :class="{ 'middle-icon-animate': navIsOpen }"
+        />
+        <span
+          class="toggler-icon bottom-bar"
+          :class="{ 'bottom-icon-animate': navIsOpen }"
+        />
       </button>
     </div>
+
+    <!-- mobile navigation  -->
+    <aside :class="{ 'leave-animation': navIsOpen === false, 'invisible': clicked === 0, }">
+      <a class="navbar-link mono block" href="#">PIZZAS</a>
+      <a class="navbar-link mono block" href="#">DRINKS</a>
+      <a class="navbar-link mono block" href="#">SIDES</a>
+      <a class="navbar-link mono block" href="#">DESSERTS</a>
+      <a class="navbar-link mono block" href="#">PASTAS</a>
+    </aside>
+
+    <SignInVue v-show="signInIsOpen" @toggle-sign="toggleSignIn" />
   </nav>
 </template>
 
 <script>
-// eslint-disable-next-line semi
-import { mapMutations } from 'vuex';
-
+import SignInVue from '../SignIn.vue'
 export default {
   name: 'AppHeader',
+  components: { SignInVue },
+  props: {
+    navIsOpen: Boolean,
+    signInIsOpen: Boolean
+  },
+  emits: ['toggle-nav', 'toggle-sign-in'],
   data () {
     return {
-
+      clicked: 0
     }
   },
   methods: {
-    ...mapMutations(['toggleSignIn'])
+    toggleNav () {
+      this.$emit('toggle-nav')
+      this.clicked = 1
+    },
+    toggleSignIn () {
+      this.$emit('toggle-sign-in')
+    }
   }
 }
 </script>
@@ -82,6 +126,9 @@ nav {
   width: 100%;
   padding: 2% 4%;
 }
+div.branding {
+  margin: auto 0;
+}
 div.mid-nav-links {
   position: relative;
   left: 100px;
@@ -90,6 +137,7 @@ div.mid-nav-links {
   align-items: center;
 }
 .right-nav-links {
+  padding: 7px 0px;
   display: flex;
   position: relative;
   right: 100px;
@@ -104,19 +152,8 @@ li.navbar-item {
   margin-right: 15%;
   color: #FFF !important;
 }
-.btn {
-  background-color: #58EE9E;
-  color: #FFF;
-  border-radius: 6px;
-}
-.btn-outline {
-  background-color: #5D3801;
-  border: 1px solid #FFF;
-  border-radius: 6px;
-  color: #FFF;
-}
 .button-text {
-  padding: 20px;
+  padding: 0px 15px !important;
 }
 .font-awesome {
   padding: 10px;
@@ -124,19 +161,29 @@ li.navbar-item {
 div button {
   margin-left: 10px;
 }
+.navbar-link {
+  color: #FFF;
+}
+.navbar-link:hover,
+.navbar-link:focus,
+.navbar-link.active {
+  color: #58EE9E;
+}
 aside {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   position: fixed;
-  width: 70vw;
-  height: 90%;
+  width: min(75vw, 400px);
+  height: 100%;
   right: 0;
-  top: 80px;
+  top: 0;
   background-color: #5D3801;
   color: #FFF;
   text-align: center;
   transform: translateX(1000px);
+  z-index: 20;
+  padding: 80px 10px;
   animation: show 0.5s linear forwards;
 }
 @keyframes show {
@@ -147,9 +194,119 @@ aside {
    transform: translateX(0px);
   }
 }
-@media (max-width: 880px) {
+.leave-animation {
+  animation: leave 0.5s linear backwards !important;
+}
+@keyframes leave {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(1000px);
+  }
+}
+.invisible {
+  opacity: 0;
+}
+.toggler-icon {
+  display: block;
+  display: none;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #58EE9E;
+  border-radius: 1px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+button.navbar-toggle {
+  background-color: #5D3801;
+  border-style: none;
+  display: none;
+  position: relative;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+span.top-bar {
+  margin-top: -10px;
+  transform: rotate(0deg);
+  border-radius: 32px;
+}
+span.middle-bar {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  width: 100%;
+  border-radius: 32px;
+}
+span.bottom-bar {
+  margin-top: 10px;
+  transform: rotate(0deg);
+  border-radius: 32px;
+}
+.top-icon-animate {
+  margin-top: 0px !important;
+  transform: rotate(135deg) !important;
+}
+.middle-icon-animate {
+  opacity: 0 !important;
+  filter: alpha(opacity=0) !important;
+}
+.bottom-icon-animate {
+  margin-top: 0px !important;
+  transform: rotate(-135deg) !important;
+  width: 100% !;
+}
+.sign-in-icon {
+  display: none;
+}
+@media (max-width: 992px) {
   .right-nav-links {
     right: 10px;
+  }
+  .mid-nav-links {
+    left: 100px;
+  }
+}
+@media (min-width: 769px) {
+  aside {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  nav {
+    align-items: center;
+  }
+  .mid-nav-links {
+    display: none;
+  }
+  .right-nav-links {
+    align-items: center;
+  }
+  button.navbar-toggle {
+    display: block;
+    margin-right: 10px;
+    z-index: 40;
+  }
+  .toggler-icon {
+    display: block;
+  }
+  .sign-in {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+@media (max-width: 375px) {
+  .sign-in-icon {
+    display: inline-block;
+  }
+  .button-text {
+    display: none;
+  }
+  .sign-in {
+    padding: 0%;
   }
 }
 </style>

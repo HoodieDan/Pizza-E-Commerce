@@ -5,7 +5,7 @@
     </h3>
     <div class="row">
       <div v-for="(drink, index) in drinks" :key="index" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-        <button>
+        <button class="drinks-button">
           <div class="card drinks brown">
             <div class="drink-image">
               <img class="drink" src="../assets/images/coke.png" :alt="'drink img'">
@@ -102,6 +102,9 @@ button {
 }
 button:last-child {
     padding: 10px;
+}
+.drinks-button {
+  padding: 0 !important;
 }
 div.card:focus,
 div.card:hover {

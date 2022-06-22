@@ -5,7 +5,7 @@
     </h3>
     <div class="row">
       <div v-for="(pizza, index) in pizzas" :key="index" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-        <button @click.prevent="toggleSelect(pizza)">
+        <button class="pizza-button" @click.prevent="toggleSelect(pizza)">
           <div class="card pizzas brown">
             <div class="pizza-image">
               <img src="../assets/images/pizza-pizza.png" alt="pizza img">
@@ -113,19 +113,23 @@ button {
   padding: 0;
 }
 button:last-child {
-    padding: 10px;
+  padding: 10px;
+}
+.pizza-button {
+  padding: 0 !important;
 }
 div.card:focus,
 div.card:hover {
-    border: solid 3px #58EE9E;
+  border: solid 3px #58EE9E;
 }
 @media (max-width: 575px) {
   div.card {
-    width: 95vw;
+    width: 92vw;
     height: auto !important;
     display: flex;
     flex-direction: row;
     padding: 0;
+    position: relative;
     align-items: center;
   }
   div.pizza-image {
@@ -133,10 +137,12 @@ div.card:hover {
     transform: scale(0.7);
     flex: 0 0 50%;
     max-width: 50%;
+    position: relative;
   }
   div.content {
     flex: 0 0 50%;
     max-width: 50%;
+    position: relative;
   }
 }
 </style>

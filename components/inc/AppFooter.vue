@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer container-fluid">
     <div class="row">
       <div class="brandy col-lg-4 col-md-4 col-sm-12">
         <div class="brand">
@@ -84,6 +84,9 @@ img.verve {
   width: 150px;
 }
 @media (max-width: 768px) {
+  div.row {
+  margin-right: 0;
+}
   .col-sm-12 {
     margin-bottom: 50px;
   }
