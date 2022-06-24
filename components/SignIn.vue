@@ -26,11 +26,6 @@
 <script>
 export default {
   emits: ['toggle-sign'],
-  data () {
-    return {
-
-    }
-  },
   methods: {
     toggleSign () {
       this.$emit('toggle-sign')

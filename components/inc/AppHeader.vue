@@ -36,7 +36,7 @@
     </div>
     <div class="right-nav-links">
       <!-- Shopping cart -->
-      <button class="btn">
+      <button class="btn" @click="toggleCart">
         <i class="font-awesome fa-solid fa-cart-shopping" />
       </button>
       <!-- sign in -->
@@ -47,6 +47,7 @@
       <!-- nav menu -->
       <button
         class="navbar-toggle"
+        :style="{ 'z-index:40': navIsOpen }"
         type="button"
         aria-label="Toggle navigation"
         @click="toggleNav"
@@ -67,7 +68,7 @@
     </div>
 
     <!-- mobile navigation  -->
-    <aside :class="{ 'leave-animation': navIsOpen === false, 'invisible': clicked === 0, }">
+    <aside class="mobile-nav" :class="{ 'leave-animation': navIsOpen === false, 'invisible': clicked === 0, }">
       <a class="navbar-link mono block" href="#">PIZZAS</a>
       <a class="navbar-link mono block" href="#">DRINKS</a>
       <a class="navbar-link mono block" href="#">SIDES</a>
@@ -76,19 +77,23 @@
     </aside>
 
     <SignInVue v-show="signInIsOpen" @toggle-sign="toggleSignIn" />
+    <cart-page v-show="cartIsOpen" @toggle-cart="toggleCart" />
   </nav>
 </template>
 
 <script>
 import SignInVue from '../SignIn.vue'
+import CartPage from '../CartPage.vue'
+
 export default {
   name: 'AppHeader',
-  components: { SignInVue },
+  components: { SignInVue, CartPage },
   props: {
     navIsOpen: Boolean,
-    signInIsOpen: Boolean
+    signInIsOpen: Boolean,
+    cartIsOpen: Boolean
   },
-  emits: ['toggle-nav', 'toggle-sign-in'],
+  emits: ['toggle-nav', 'toggle-sign-in', 'toggle-cart'],
   data () {
     return {
       clicked: 0
@@ -101,6 +106,9 @@ export default {
     },
     toggleSignIn () {
       this.$emit('toggle-sign-in')
+    },
+    toggleCart () {
+      this.$emit('toggle-cart')
     }
   }
 }
@@ -122,7 +130,6 @@ nav {
   display: flex;
   justify-content: space-between;
   position: relative;
-  height: 94px;
   width: 100%;
   padding: 2% 4%;
 }
@@ -169,7 +176,7 @@ div button {
 .navbar-link.active {
   color: #58EE9E;
 }
-aside {
+aside.mobile-nav {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -271,7 +278,7 @@ span.bottom-bar {
   }
 }
 @media (min-width: 769px) {
-  aside {
+  aside.mobile-nav {
     display: none;
   }
 }
@@ -288,7 +295,6 @@ span.bottom-bar {
   button.navbar-toggle {
     display: block;
     margin-right: 10px;
-    z-index: 40;
   }
   .toggler-icon {
     display: block;

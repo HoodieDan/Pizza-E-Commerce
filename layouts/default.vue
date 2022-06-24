@@ -1,18 +1,21 @@
 <template>
-  <div :class="{ 'no-scroll-sm': navIsOpen || signInIsOpen }">
+  <div :class="{ 'no-scroll-sm': navIsOpen || signInIsOpen, 'stick': selectPageIsOpen }">
     <AppHeaderVue
+      class="sticky-top"
       :nav-is-open="navIsOpen"
       :sign-in-is-open="signInIsOpen"
-      class="sticky-top"
+      :cart-is-open="cartIsOpen"
       @toggle-nav="navIsOpen = !navIsOpen"
       @toggle-sign-in="signInIsOpen = !signInIsOpen"
+      @toggle-cart="cartIsOpen = !cartIsOpen"
     />
-    <Nuxt />
+    <Nuxt :class="{ 'no-scroll-lg': selectPageIsOpen }" />
     <AppFooterVue />
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AppHeaderVue from '~/components/inc/AppHeader.vue'
 import AppFooterVue from '~/components/inc/AppFooter.vue'
 export default {
@@ -25,6 +28,9 @@ export default {
       signInIsOpen: false,
       cartIsOpen: false
     }
+  },
+  computed: {
+    ...mapState(['selectPageIsOpen'])
   }
 }
 </script>

@@ -5,16 +5,16 @@
         <img src="../assets/images/select-page-pizza.png" alt="selected pizza">
       </div>
       <div class="pizza-info">
-        <button class="close-modal btn" @click="toggleSelect">
+        <button class="close-modal btn" @click="toggleSelectFromSelect">
           <i class="fa-solid fa-xmark" />
         </button>
         <div class="cont">
           <div class="info">
             <h2 class="brown semi-bold">
-              {{ selected.name }}
+              {{ selectedPizza.name }}
             </h2>
             <h6 class="brown">
-              {{ selected.ingredients }}
+              {{ selectedPizza.ingredients }}
             </h6>
           </div>
           <div class="size">
@@ -81,7 +81,7 @@
               Total:
             </h6>
             <h2 class="brown semi-bold">
-              {{ selected.price }}
+              {{ selectedPizza.price }}
             </h2>
           </div>
         </div>
@@ -94,6 +94,8 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
+
 export default {
   name: 'SelectPage',
   props: {
@@ -101,10 +103,11 @@ export default {
     selected: Object
   },
   emits: ['togglePage'],
+  computed: {
+    ...mapState(['selectPageIsOpen', 'selectedPizza'])
+  },
   methods: {
-    toggleSelect () {
-      this.$emit('togglePage')
-    }
+    ...mapMutations(['toggleSelectFromSelect'])
   }
 }
 </script>

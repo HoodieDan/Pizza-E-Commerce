@@ -34,62 +34,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Drinks',
-  data () {
-    return {
-      drinks: [
-        {
-          name: 'COCA-COLA',
-          description: '33cl Orginal Taste',
-          price: 'N300',
-          image: 'coke.png'
-        },
-        {
-          name: 'FANTA',
-          description: '33cl Original Taste',
-          price: 'N300',
-          image: '../assets/images/coke.png'
-        },
-        {
-          name: 'SPRITE',
-          description: '33cl Original Taste',
-          price: 'N300',
-          image: '../assets/images/coke.png'
-        },
-        {
-          name: '5ALIVE BERRY BLAST',
-          description: '85cl Original Taste',
-          price: 'N800',
-          image: '../assets/images/coke.png'
-        },
-        {
-          name: 'COCA-COLA',
-          description: '33cl Orginal Taste',
-          price: 'N300',
-          image: 'coke.png'
-        },
-        {
-          name: 'COCA-COLA',
-          description: '33cl Orginal Taste',
-          price: 'N300',
-          image: 'coke.png'
-        },
-        {
-          name: 'COCA-COLA',
-          description: '33cl Orginal Taste',
-          price: 'N300',
-          image: 'coke.png'
-        },
-        {
-          name: 'COCA-COLA',
-          description: '33cl Orginal Taste',
-          price: 'N300',
-          image: 'coke.png'
-        }
-      ]
-    }
+  computed: {
+    ...mapState(['drinks'])
   }
 }
 </script>
@@ -108,7 +59,7 @@ button:last-child {
 }
 div.card:focus,
 div.card:hover {
-    border: solid 3px #58EE9E;
+    outline: solid 3px #58EE9E;
 }
 div.drink-image {
     display: flex;

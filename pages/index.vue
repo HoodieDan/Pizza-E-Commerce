@@ -47,7 +47,7 @@ div.card {
   height: 280px;
   text-align: center;
   padding: 2%;
-  transition: all 0.25s ease-out;
+  transition: all 0.15s linear;
 }
 div.pizza-image {
   position: relative;

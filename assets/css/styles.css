@@ -39,6 +39,9 @@ div::-webkit-scrollbar-thumb {
 .no-scroll-sm {
     position: fixed !important;
 }
+.stick {
+    position: sticky !important;
+}
 .no-scroll-lg {
     overflow: hidden !important;
 }

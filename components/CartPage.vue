@@ -4,7 +4,7 @@
       <button class="close-modal btn" @click="toggleCart">
         <i class="fa-solid fa-xmark" />
       </button>
-      <h2 class="brown semi-bold">
+      <h2 class="brown semi-bold cart-header">
         CART
       </h2>
     </div>
@@ -13,8 +13,7 @@
 
 <script>
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Cart',
+  name: 'CartPage',
   emits: ['toggle-cart'],
   methods: {
     toggleCart () {
@@ -25,10 +24,10 @@ export default {
 </script>
 
 <style scoped>
-aside {
+aside.cart {
+  box-shadow: 0px 1px 6px rgb(0 0 0 / 20%);
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   position: fixed;
   width: min(75vw, 400px);
   height: 70%;
@@ -37,11 +36,11 @@ aside {
   background: url('../assets/images/cart-bg.png') no-repeat;
   background-color: #FFF;
   background-position: center center;
+  border-radius: 5px;
   color: #5D3801;
-  text-align: center;
   transform: translateX(1000px);
   z-index: 20;
-  padding: 80px 10px;
+  padding: 10px 10px;
   animation: show 0.5s linear forwards;
 }
 @keyframes show {
@@ -70,5 +69,16 @@ button.close-modal {
     position: absolute;
     top: 20px;
     right: 20px;
+}
+h2.cart-header {
+  margin-top: 40px;
+  margin-left: 10px;
+}
+aside.cart:after {
+  margin: 80% auto;
+  font-size: 1.75rem;
+  content: "Cart is Empty!";
+  color: #5D3801;
+  z-index: -1;
 }
 </style>

@@ -26,11 +26,12 @@
         <span class="button-text">View More</span>
       </button>
     </div>
-    <SelectPage v-show="openSelect === true" :selected="selected" @togglePage="toggleSelectFromSelect" />
+    <SelectPage v-show="selectPageIsOpen === true" />
   </section>
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 import SelectPage from '~/components/SelectPage.vue'
 
 export default {
@@ -40,68 +41,14 @@ export default {
   data () {
     return {
       openSelect: false,
-      selected: {},
-      pizzas: [
-        {
-          name: 'MARGHERITA',
-          ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-          price: 'N3,400',
-          image: ''
-        },
-        {
-          name: 'LIGHT CHEESE',
-          ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-          price: 'N3,000',
-          image: ''
-        },
-        {
-          name: 'SUYA PIZZA',
-          ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-          price: 'N3,200',
-          image: ''
-        },
-        {
-          name: 'PEPPERONI',
-          ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-          price: 'N3,200',
-          image: ''
-        },
-        {
-          name: 'MARGHERITA',
-          ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-          price: 'N3,400',
-          image: ''
-        },
-        {
-          name: 'LIGHT CHEESE',
-          ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-          price: 'N3,000',
-          image: ''
-        },
-        {
-          name: 'SUYA PIZZA',
-          ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-          price: 'N3,200',
-          image: ''
-        },
-        {
-          name: 'PEPPERONI',
-          ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-          price: 'N3,200',
-          image: ''
-        }
-      ]
+      selected: {}
     }
   },
+  computed: {
+    ...mapState(['selectPageIsOpen', 'pizzas'])
+  },
   methods: {
-    toggleSelect (pizza) {
-      this.openSelect = !this.openSelect
-      this.selected = pizza
-    },
-    toggleSelectFromSelect (pizza) {
-      this.openSelect = !this.openSelect
-      this.selected = {}
-    }
+    ...mapMutations(['toggleSelect'])
   }
 }
 </script>
@@ -120,7 +67,7 @@ button:last-child {
 }
 div.card:focus,
 div.card:hover {
-  border: solid 3px #58EE9E;
+  outline: solid 3px #58EE9E;
 }
 @media (max-width: 575px) {
   div.card {

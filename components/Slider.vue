@@ -7,8 +7,6 @@
       controls
       indicators
       background="#FFF"
-      img-width="1024"
-      img-height="480"
       style="text-shadow: 1px 1px 2px #333;"
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
@@ -17,7 +15,15 @@
       <b-carousel-slide img-src="../assets/images/home-ad.png" />
 
       <!-- Slides two -->
-      <b-carousel-slide img-src="../assets/images/home-ad.png" />
+      <b-carousel-slide>
+        <template #img>
+          <img
+            width="100%"
+            src="../assets/images/home-ad.png"
+            alt="image slot"
+          >
+        </template>
+      </b-carousel-slide>
 
       <!-- Slides with image only -->
       <b-carousel-slide img-src="../assets/images/home-ad.png" />
