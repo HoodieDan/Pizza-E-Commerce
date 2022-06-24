@@ -43,5 +43,5 @@ div::-webkit-scrollbar-thumb {
     position: sticky !important;
 }
 .no-scroll-lg {
-    overflow: hidden !important;
+    overflow-y: hidden !important;
 }

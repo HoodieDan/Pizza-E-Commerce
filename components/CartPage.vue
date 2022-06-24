@@ -1,20 +1,40 @@
 <template>
-  <aside class="cart">
-    <div class="head">
-      <button class="close-modal btn" @click="toggleCart">
-        <i class="fa-solid fa-xmark" />
-      </button>
-      <h2 class="brown semi-bold cart-header">
-        CART
-      </h2>
-    </div>
-  </aside>
+  <div class="cart-container">
+    <aside v-show="cartItemsLength === 0" class="cart empty">
+      <div class="head">
+        <button class="close-modal btn" @click="toggleCart">
+          <i class="fa-solid fa-xmark" />
+        </button>
+        <h2 class="brown semi-bold cart-header">
+          CART
+        </h2>
+      </div>
+    </aside>
+
+    <aside v-show="cartItemsLength > 0" class="cart">
+      <div class="head">
+        <button class="close-modal btn" @click="toggleCart">
+          <i class="fa-solid fa-xmark" />
+        </button>
+        <h2 class="brown semi-bold cart-header">
+          CART
+        </h2>
+        <p>total : N{{ itemTotal }}</p>
+      </div>
+    </aside>
+  </div>
 </template>
 
 <script>
+import { mapGetters, mapState } from 'vuex'
+
 export default {
   name: 'CartPage',
   emits: ['toggle-cart'],
+  computed: {
+    ...mapGetters(['cartItemsLength', 'itemTotal']),
+    ...mapState(['cartItems'])
+  },
   methods: {
     toggleCart () {
       this.$emit('toggle-cart')
@@ -33,7 +53,6 @@ aside.cart {
   height: 70%;
   right: 0;
   top: 0;
-  background: url('../assets/images/cart-bg.png') no-repeat;
   background-color: #FFF;
   background-position: center center;
   border-radius: 5px;
@@ -74,8 +93,14 @@ h2.cart-header {
   margin-top: 40px;
   margin-left: 10px;
 }
-aside.cart:after {
-  margin: 80% auto;
+aside.cart.empty {
+  background: url('../assets/images/cart-bg.png') no-repeat;
+  background-color: #FFF;
+  background-position: center center;
+  z-index: 20;
+}
+aside.cart.empty:after {
+  margin: 1% auto;
   font-size: 1.75rem;
   content: "Cart is Empty!";
   color: #5D3801;

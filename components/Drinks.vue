@@ -18,7 +18,7 @@
                 </p>
               </div>
               <div>
-                <h5><span class="from">from</span>{{ drink.price }}</h5>
+                <h5><span class="from">from</span>N{{ drink.price }}</h5>
               </div>
             </div>
           </div>

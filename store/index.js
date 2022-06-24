@@ -5,50 +5,74 @@ export const state = () => ({
     {
       name: 'MARGHERITA',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 'N3,400',
-      image: ''
+      price: 3400,
+      image: '',
+      size: '',
+      quantity: 1,
+      toppings: []
     },
     {
       name: 'LIGHT CHEESE',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 'N3,000',
-      image: ''
+      price: 3000,
+      image: '',
+      size: '',
+      quantity: 1,
+      toppings: []
     },
     {
       name: 'SUYA PIZZA',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 'N3,200',
-      image: ''
+      price: 3200,
+      image: '',
+      size: '',
+      quantity: 1,
+      toppings: []
     },
     {
       name: 'PEPPERONI',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 'N3,200',
-      image: ''
+      price: 3200,
+      image: '',
+      size: '',
+      quantity: 1,
+      toppings: []
     },
     {
       name: 'MARGHERITA',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 'N3,400',
-      image: ''
+      price: 3400,
+      image: '',
+      size: '',
+      quantity: 1,
+      toppings: []
     },
     {
       name: 'LIGHT CHEESE',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 'N3,000',
-      image: ''
+      price: 3000,
+      image: '',
+      size: '',
+      quantity: 1,
+      toppings: []
     },
     {
       name: 'SUYA PIZZA',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 'N3,200',
-      image: ''
+      price: 3200,
+      image: '',
+      size: '',
+      quantity: 1,
+      toppings: []
     },
     {
       name: 'PEPPERONI',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 'N3,200',
-      image: ''
+      price: 3200,
+      image: '',
+      size: '',
+      quantity: 1,
+      toppings: []
     }
   ],
   selectedPizza: {},
@@ -56,56 +80,70 @@ export const state = () => ({
     {
       name: 'COCA-COLA',
       description: '33cl Orginal Taste',
-      price: 'N300',
+      price: 300,
       image: 'coke.png'
     },
     {
       name: 'FANTA',
       description: '33cl Original Taste',
-      price: 'N300',
+      price: 300,
       image: '../assets/images/coke.png'
     },
     {
       name: 'SPRITE',
       description: '33cl Original Taste',
-      price: 'N300',
+      price: 300,
       image: '../assets/images/coke.png'
     },
     {
       name: '5ALIVE BERRY BLAST',
       description: '85cl Original Taste',
-      price: 'N800',
+      price: 800,
       image: '../assets/images/coke.png'
     },
     {
       name: 'COCA-COLA',
       description: '33cl Orginal Taste',
-      price: 'N300',
+      price: 300,
       image: 'coke.png'
     },
     {
       name: 'COCA-COLA',
       description: '33cl Orginal Taste',
-      price: 'N300',
+      price: 300,
       image: 'coke.png'
     },
     {
       name: 'COCA-COLA',
       description: '33cl Orginal Taste',
-      price: 'N300',
+      price: 300,
       image: 'coke.png'
     },
     {
       name: 'COCA-COLA',
       description: '33cl Orginal Taste',
-      price: 'N300',
+      price: 300,
       image: 'coke.png'
     }
   ],
-  cartItem: []
+  cartItems: []
 })
 
-export const getters = {}
+export const getters = {
+  cartItemsLength (state) {
+    return state.cartItems.length
+  },
+  itemTotal (state) {
+    let prices = 0
+    let toppingsPrice = 0
+    state.cartItems.forEach((item) => {
+      prices += (item.price * item.quantity)
+      toppingsPrice += (item.toppings.length * 600)
+    })
+    const sum = prices + toppingsPrice
+    return sum
+  }
+}
 
 export const actions = {}
 
@@ -120,5 +158,8 @@ export const mutations = {
   toggleSelectFromSelect (state) {
     state.selectPageIsOpen = !state.selectPageIsOpen
     state.selectedPizza = {}
+  },
+  addToCart (state) {
+    state.cartItems.push(state.selectedPizza)
   }
 }

@@ -15,7 +15,7 @@
               <p class="pizza-p">
                 {{ pizza.ingredients }}
               </p>
-              <h5><span class="from">from</span>{{ pizza.price }}</h5>
+              <h5><span class="from">from</span>N{{ pizza.price }}</h5>
             </div>
           </div>
         </button>

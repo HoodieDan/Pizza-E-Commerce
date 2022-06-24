@@ -1,9 +1,11 @@
 <template>
   <div
     class="backdrop"
-    @wheel.prevent
-    @touchmove.prevent
-    @scroll.prevent
+    @wheel.self.prevent
+    @touchmove.self.prevent
+    @scroll.self.prevent
+    @touch.self="toggleSelectFromSelect"
+    @click.self="toggleSelectFromSelect"
   >
     <div class="select-modal">
       <div class="selected">
@@ -86,11 +88,11 @@
               Total:
             </h6>
             <h2 class="brown semi-bold">
-              {{ selectedPizza.price }}
+              N{{ selectedPizza.price }}
             </h2>
           </div>
         </div>
-        <button class="btn add-to-cart">
+        <button class="btn add-to-cart" @click="addToCart">
           ADD TO CART
         </button>
       </div>
@@ -112,7 +114,8 @@ export default {
     ...mapState(['selectPageIsOpen', 'selectedPizza'])
   },
   methods: {
-    ...mapMutations(['toggleSelectFromSelect'])
+    ...mapMutations(['toggleSelectFromSelect']),
+    ...mapMutations(['addToCart'])
   }
 }
 </script>
@@ -182,9 +185,8 @@ button.topping {
   height: 95px;
 }
 .add-to-cart {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  position: relative;
+  left: 60%;
 }
 @media (max-width: 768px) {
   button.close-modal {

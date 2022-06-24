@@ -5,7 +5,7 @@
         HOME
       </nuxt-link>
     </div>
-    <div class="mid-nav-links">
+    <div class="mid-nav-links mx-auto">
       <ul class="navbar-navi">
         <li class="navbar-item">
           <nuxt-link class="navi-link text-white" to="/pizzas">
@@ -34,7 +34,7 @@
         </li>
       </ul>
     </div>
-    <div class="right-nav-links">
+    <div class="right-nav-links me-auto">
       <!-- Shopping cart -->
       <button class="btn" @click="toggleCart">
         <i class="font-awesome fa-solid fa-cart-shopping" />
@@ -305,17 +305,6 @@ span.bottom-bar {
   .sign-in {
     padding-top: 5px;
     padding-bottom: 5px;
-  }
-}
-@media (max-width: 375px) {
-  .sign-in-icon {
-    display: inline-block;
-  }
-  .button-text {
-    display: none;
-  }
-  .sign-in {
-    padding: 0%;
   }
 }
 </style>
