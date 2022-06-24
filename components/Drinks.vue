@@ -1,5 +1,5 @@
 <template>
-  <section id="drinks" class="container-fluid">
+  <section id="drinks" class="container">
     <h3 class="index-header brown">
       Drinks
     </h3>

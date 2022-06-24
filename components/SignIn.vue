@@ -1,5 +1,10 @@
 <template>
-  <div class="backdrop">
+  <div
+    class="backdrop"
+    @wheel.prevent
+    @touchmove.prevent
+    @scroll.prevent
+  >
     <div class="sign-in-modal">
       <img class="top-left" src="../assets/images/top-pizza-sign-in.png" alt="top pizza">
       <button class="close-modal btn" @click="toggleSign">

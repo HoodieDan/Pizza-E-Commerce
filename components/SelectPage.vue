@@ -1,5 +1,10 @@
 <template>
-  <div class="backdrop">
+  <div
+    class="backdrop"
+    @wheel.prevent
+    @touchmove.prevent
+    @scroll.prevent
+  >
     <div class="select-modal">
       <div class="selected">
         <img src="../assets/images/select-page-pizza.png" alt="selected pizza">

@@ -101,7 +101,8 @@ export const state = () => ({
       price: 'N300',
       image: 'coke.png'
     }
-  ]
+  ],
+  cartItem: []
 })
 
 export const getters = {}

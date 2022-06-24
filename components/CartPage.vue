@@ -81,4 +81,9 @@ aside.cart:after {
   color: #5D3801;
   z-index: -1;
 }
+@media (max-width: 768px) {
+  aside.cart {
+    height: 100%;
+  }
+}
 </style>

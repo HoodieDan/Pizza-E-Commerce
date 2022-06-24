@@ -47,7 +47,7 @@
       <!-- nav menu -->
       <button
         class="navbar-toggle"
-        :style="{ 'z-index:40': navIsOpen }"
+        :class="{ 'increase-index': navIsOpen }"
         type="button"
         aria-label="Toggle navigation"
         @click="toggleNav"
@@ -241,6 +241,9 @@ span.top-bar {
   margin-top: -10px;
   transform: rotate(0deg);
   border-radius: 32px;
+}
+.increase-index {
+  z-index: 40;
 }
 span.middle-bar {
   opacity: 1;

@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'no-scroll-sm': navIsOpen || signInIsOpen, 'stick': selectPageIsOpen }">
+  <div class="page" :class="{ 'no-scroll-sm': navIsOpen }">
     <AppHeaderVue
       class="sticky-top"
       :nav-is-open="navIsOpen"
@@ -9,7 +9,7 @@
       @toggle-sign-in="signInIsOpen = !signInIsOpen"
       @toggle-cart="cartIsOpen = !cartIsOpen"
     />
-    <Nuxt :class="{ 'no-scroll-lg': selectPageIsOpen }" />
+    <Nuxt />
     <AppFooterVue />
   </div>
 </template>

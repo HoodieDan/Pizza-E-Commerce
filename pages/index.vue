@@ -1,7 +1,6 @@
 <template>
   <div class="home-page">
     <SliderVue />
-    <LocationsVue />
     <PizzasVue />
     <Drinks />
   </div>
@@ -9,14 +8,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import LocationsVue from '../components/Locations.vue'
 import SliderVue from '~/components/Slider.vue'
 import PizzasVue from '~/components/Pizzas.vue'
 import Drinks from '~/components/Drinks.vue'
 
 export default {
   name: 'IndexPage',
-  components: { SliderVue, LocationsVue, PizzasVue, Drinks },
+  components: { SliderVue, PizzasVue, Drinks },
   props: {
     signInIsOpen: Boolean
   },
@@ -43,7 +41,7 @@ h3.index-header {
 }
 div.card {
   margin: 20px auto 20px auto;
-  width: 250px;
+  width: 220px;
   height: 280px;
   text-align: center;
   padding: 2%;
@@ -51,6 +49,7 @@ div.card {
 }
 div.pizza-image {
   position: relative;
+  height: 200px;
 }
 div.content {
   position: relative;
@@ -62,7 +61,9 @@ div.content {
   text-align: left !important;
 }
 .pizzas img {
-  margin-top: -13px;
+  margin-top: -20px;
+  right: 20px;
+  bottom: 10px;
   position: relative;
 }
 .pizza-p, .drinks-p {

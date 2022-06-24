@@ -1,5 +1,5 @@
 <template>
-  <section id="pizzas" class="container-fluid">
+  <section id="pizzas" class="container">
     <h3 class="brown index-header brown">
       Pizzas
     </h3>
@@ -54,6 +54,9 @@ export default {
 </script>
 
 <style scoped>
+img {
+  transform: scale(0.8);
+}
 button {
   border: none;
   background: none;
