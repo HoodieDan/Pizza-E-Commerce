@@ -28,7 +28,9 @@
               <button class="btn remove-pizza" @click="removeFromCart(cartItem.name)">
                 x
               </button>
-              <h5>{{ cartItem.name }}</h5>
+              <h5 class="semi-bold">
+                {{ cartItem.name }}
+              </h5>
               <p>Regular, Onion</p>
             </div>
             <div class="quantity-and-price">
@@ -44,7 +46,9 @@
                 </button>
               </div>
               <div class="price">
-                <h5>N{{ cartItem.price }}</h5>
+                <h5 class="semi-bold">
+                  N{{ cartItem.price }}
+                </h5>
               </div>
             </div>
           </div>

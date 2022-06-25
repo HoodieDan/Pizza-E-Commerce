@@ -40,7 +40,7 @@ export const state = () => ({
       toppings: []
     },
     {
-      name: 'MARGHERITA',
+      name: 'HAWAIIAN',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       price: 3400,
       image: '',
@@ -49,7 +49,7 @@ export const state = () => ({
       toppings: []
     },
     {
-      name: 'LIGHT CHEESE',
+      name: 'SUPER MEATY',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       price: 3000,
       image: '',
@@ -58,7 +58,7 @@ export const state = () => ({
       toppings: []
     },
     {
-      name: 'SUYA PIZZA',
+      name: 'MEATY BBQ',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       price: 3200,
       image: '',
@@ -67,7 +67,7 @@ export const state = () => ({
       toppings: []
     },
     {
-      name: 'PEPPERONI',
+      name: 'CHEESY CHICKEN',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       price: 3200,
       image: '',
@@ -175,8 +175,9 @@ export const mutations = {
     const foundItem = state.cartItems.find((item) => {
       return item.name === order
     })
+    foundItem.quantity = 1
     const index = state.cartItems.indexOf(foundItem)
-    state.cartItems.splice(index, index + 1)
+    state.cartItems.splice(index, 1)
   },
   increaseQuantity (state, order) {
     const foundItem = state.cartItems.find((item) => {
@@ -191,7 +192,7 @@ export const mutations = {
     foundItem.quantity--
     if (foundItem.quantity === 0) {
       const index = state.cartItems.indexOf(foundItem)
-      state.cartItems.splice(index, index + 1)
+      state.cartItems.splice(index, 1)
     }
   }
 }

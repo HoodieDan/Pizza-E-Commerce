@@ -82,6 +82,9 @@
                 </p>
               </button>
             </div>
+            <p class="brown">
+              *note that toppings cost N600 for each topping selected.
+            </p>
           </div>
           <div class="total">
             <h6 class="brown">
@@ -101,7 +104,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapGetters } from 'vuex'
 
 export default {
   name: 'SelectPage',
@@ -111,11 +114,11 @@ export default {
   },
   emits: ['togglePage'],
   computed: {
-    ...mapState(['selectPageIsOpen', 'selectedPizza'])
+    ...mapState(['selectPageIsOpen', 'selectedPizza']),
+    ...mapGetters(['selectedItemTotal'])
   },
   methods: {
-    ...mapMutations(['toggleSelectFromSelect']),
-    ...mapMutations(['addToCart'])
+    ...mapMutations(['toggleSelectFromSelect', 'addToCart'])
   }
 }
 </script>
@@ -183,6 +186,9 @@ button.topping {
   border-radius: 5px;
   margin: 5px;
   height: 95px;
+}
+div.total {
+  margin-top: 20px;
 }
 .add-to-cart {
   position: relative;

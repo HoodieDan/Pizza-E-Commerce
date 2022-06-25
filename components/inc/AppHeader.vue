@@ -91,8 +91,7 @@ export default {
   components: { SignInVue, CartPage },
   props: {
     navIsOpen: Boolean,
-    signInIsOpen: Boolean,
-    cartIsOpen: Boolean
+    signInIsOpen: Boolean
   },
   emits: ['toggle-nav', 'toggle-sign-in'],
   data () {
