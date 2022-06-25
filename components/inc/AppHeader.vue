@@ -34,7 +34,7 @@
         </li>
       </ul>
     </div>
-    <div class="right-nav-links me-auto">
+    <div class="right-nav-links ml-auto">
       <!-- Shopping cart -->
       <button class="btn" @click="toggleCart">
         <i class="font-awesome fa-solid fa-cart-shopping" />
@@ -77,11 +77,12 @@
     </aside>
 
     <SignInVue v-show="signInIsOpen" @toggle-sign="toggleSignIn" />
-    <cart-page v-show="cartIsOpen" @toggle-cart="toggleCart" />
+    <cart-page v-show="cartIsOpen" />
   </nav>
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 import SignInVue from '../SignIn.vue'
 import CartPage from '../CartPage.vue'
 
@@ -93,22 +94,23 @@ export default {
     signInIsOpen: Boolean,
     cartIsOpen: Boolean
   },
-  emits: ['toggle-nav', 'toggle-sign-in', 'toggle-cart'],
+  emits: ['toggle-nav', 'toggle-sign-in'],
   data () {
     return {
       clicked: 0
     }
   },
+  computed: {
+    ...mapState(['cartIsOpen'])
+  },
   methods: {
+    ...mapMutations(['toggleCart']),
     toggleNav () {
       this.$emit('toggle-nav')
       this.clicked = 1
     },
     toggleSignIn () {
       this.$emit('toggle-sign-in')
-    },
-    toggleCart () {
-      this.$emit('toggle-cart')
     }
   }
 }

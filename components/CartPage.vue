@@ -19,26 +19,53 @@
         <h2 class="brown semi-bold cart-header">
           CART
         </h2>
-        <p>total : N{{ itemTotal }}</p>
+        <div class="items">
+          <div v-for="(cartItem, index) in cartItems" :key="index" class="cart-card d-flex">
+            <div class="image">
+              <img src="../assets/images/cart-pizza-pic.png" alt="selected pizza" class="cart-pizza-pic">
+            </div>
+            <div class="order">
+              <button class="btn remove-pizza" @click="removeFromCart(cartItem.name)">
+                x
+              </button>
+              <h5>{{ cartItem.name }}</h5>
+              <p>Regular, Onion</p>
+            </div>
+            <div class="quantity-and-price">
+              <div class="quantity d-flex">
+                <button class="white-btn-outline" @click="reduceQuantity(cartItem.name)">
+                  -
+                </button>
+                <p class="pizza-quantity">
+                  {{ cartItem.quantity }}
+                </p>
+                <button class="brown-btn-outline" @click="increaseQuantity(cartItem.name)">
+                  +
+                </button>
+              </div>
+              <div class="price">
+                <h5>N{{ cartItem.price }}</h5>
+              </div>
+            </div>
+          </div>
+          <p>total : N{{ itemTotal }}</p>
+        </div>
       </div>
     </aside>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters, mapMutations, mapState } from 'vuex'
 
 export default {
   name: 'CartPage',
-  emits: ['toggle-cart'],
   computed: {
     ...mapGetters(['cartItemsLength', 'itemTotal']),
     ...mapState(['cartItems'])
   },
   methods: {
-    toggleCart () {
-      this.$emit('toggle-cart')
-    }
+    ...mapMutations(['removeFromCart', 'toggleCart', 'reduceQuantity', 'increaseQuantity'])
   }
 }
 </script>
@@ -60,6 +87,8 @@ aside.cart {
   transform: translateX(1000px);
   z-index: 20;
   padding: 10px 10px;
+  overflow-y: initial !important;
+  overflow-x: hidden;
   animation: show 0.5s linear forwards;
 }
 @keyframes show {
@@ -105,6 +134,80 @@ aside.cart.empty:after {
   content: "Cart is Empty!";
   color: #5D3801;
   z-index: -1;
+}
+div.cart-card {
+  width: 95%;
+  height: 100px;
+  border: #DED8D8 1px solid;
+  border-radius: 5px;
+  position: relative;
+  padding: 10px;
+  margin: 20px 0;
+}
+img.cart-pizza-pic {
+  height: 80px;
+  width: 80px;
+  margin-right: 10px;
+}
+div.quantity-and-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+div.quantity {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+.white-btn-outline {
+    border-radius: 5px;
+    background-color: #FFF;
+    border: #5D3801 1px solid;
+    color: #5D3801;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 10px;
+}
+.brown-btn-outline {
+    border-radius: 5px;
+    background-color: #5D3801;
+    border: #FFF 1px solid;
+    color: #FFF;
+    width: 20px;
+    height: 20px;
+    line-height: 15px;
+    display: flex;
+    justify-content: center;
+}
+p.pizza-quantity {
+  margin: 0 5px;
+}
+div.price {
+  position: absolute;
+  bottom: 0px;
+  right: 15px;
+}
+div.items {
+  overflow-y: auto;
+}
+.btn.remove-pizza {
+  height: 20px;
+  width: 10px;
+  display: flex;
+  justify-content: center;
+}
+button.remove-pizza {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  line-height: 1px;
+  z-index: 101;
+}
+button:focus,
+button:hover,
+button.active {
+    outline: solid 2px #58EE9E;
 }
 @media (max-width: 768px) {
   aside.cart {

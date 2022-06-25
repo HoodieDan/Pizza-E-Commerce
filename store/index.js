@@ -1,6 +1,7 @@
 export const state = () => ({
   signInOpen: false,
   selectPageIsOpen: false,
+  cartIsOpen: false,
   pizzas: [
     {
       name: 'MARGHERITA',
@@ -155,11 +156,38 @@ export const mutations = {
     state.selectPageIsOpen = !state.selectPageIsOpen
     state.selectedPizza = pizza
   },
+  toggleCart (state) {
+    state.cartIsOpen = !state.cartIsOpen
+  },
   toggleSelectFromSelect (state) {
     state.selectPageIsOpen = !state.selectPageIsOpen
     state.selectedPizza = {}
   },
   addToCart (state) {
-    state.cartItems.push(state.selectedPizza)
+    if (state.cartItems.includes(state.selectedPizza)) {
+      state.selectedPizza.quantity++
+    } else {
+      state.cartItems.push(state.selectedPizza)
+    }
+    state.cartIsOpen = true
+  },
+  removeFromCart (state, order) {
+    const foundItem = state.cartItems.find((item) => {
+      return item.name === order
+    })
+    const index = state.cartItems.indexOf(foundItem)
+    state.cartItems.splice(index, index + 1)
+  },
+  increaseQuantity (state, order) {
+    const foundItem = state.cartItems.find((item) => {
+      return item.name === order
+    })
+    foundItem.quantity++
+  },
+  reduceQuantity (state, order) {
+    const foundItem = state.cartItems.find((item) => {
+      return item.name === order
+    })
+    foundItem.quantity--
   }
 }

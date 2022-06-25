@@ -52,13 +52,13 @@
                 </p>
               </button>
               <button class="topping">
-                <img src="../assets/images/chicken.png" alt="onions">
+                <img src="../assets/images/chicken.png" alt="chicken">
                 <p class="brown">
                   Chicken
                 </p>
               </button>
               <button class="topping">
-                <img src="../assets/images/sausage.png" alt="onions">
+                <img src="../assets/images/sausage.png" alt="sausage">
                 <p class="brown">
                   Sausage
                 </p>
@@ -70,13 +70,13 @@
                 </p>
               </button>
               <button class="topping">
-                <img src="../assets/images/chicken.png" alt="onions">
+                <img src="../assets/images/chicken.png" alt="chicken">
                 <p class="brown">
                   Chicken
                 </p>
               </button>
               <button class="topping">
-                <img src="../assets/images/sausage.png" alt="onions">
+                <img src="../assets/images/sausage.png" alt="sausage">
                 <p class="brown">
                   Sausage
                 </p>
@@ -167,7 +167,7 @@ div.cont {
     overflow-y: auto;
 }
 button.select {
-    border: #5d3801 1px solid;
+    border: #DED8D8 1px solid;
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
@@ -179,7 +179,7 @@ div.toppings {
   overflow-y: hidden;
 }
 button.topping {
-  border: #5d3801 1px solid;
+  border: #DED8D8 1px solid;
   border-radius: 5px;
   margin: 5px;
   height: 95px;

@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import AppHeaderVue from '~/components/inc/AppHeader.vue'
 import AppFooterVue from '~/components/inc/AppFooter.vue'
 export default {
@@ -29,8 +28,12 @@ export default {
       cartIsOpen: false
     }
   },
-  computed: {
-    ...mapState(['selectPageIsOpen'])
+  methods: {
+    closeAll () {
+      this.navIsOpen = false
+      this.signInIsOpen = false
+      this.cartIsOpen = false
+    }
   }
 }
 </script>

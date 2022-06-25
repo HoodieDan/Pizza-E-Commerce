@@ -4,6 +4,8 @@
     @wheel.prevent
     @touchmove.prevent
     @scroll.prevent
+    @click.self="toggleSign"
+    @touch.self="toggleSign"
   >
     <div class="sign-in-modal">
       <img class="top-left" src="../assets/images/top-pizza-sign-in.png" alt="top pizza">
