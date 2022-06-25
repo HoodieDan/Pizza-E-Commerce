@@ -286,6 +286,9 @@ span.bottom-bar {
   aside.mobile-nav {
     display: none;
   }
+  .right-nav-links {
+    margin-left: 0px !important;
+  }
 }
 @media (max-width: 768px) {
   nav {
