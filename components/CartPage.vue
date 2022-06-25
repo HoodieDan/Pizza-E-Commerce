@@ -213,5 +213,13 @@ button.active {
   aside.cart {
     height: 100%;
   }
+  div.cart-card {
+    height: 150px;
+  }
+  div.quantity {
+    align-items: flex-end;
+    bottom: 10px;
+    left: 10px;
+  }
 }
 </style>

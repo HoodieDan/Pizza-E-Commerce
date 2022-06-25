@@ -189,5 +189,9 @@ export const mutations = {
       return item.name === order
     })
     foundItem.quantity--
+    if (foundItem.quantity === 0) {
+      const index = state.cartItems.indexOf(foundItem)
+      state.cartItems.splice(index, index + 1)
+    }
   }
 }
