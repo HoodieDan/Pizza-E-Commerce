@@ -329,8 +329,9 @@ export const mutations = {
       return item.name === topping.name
     })
     if (state.selectedPizza.toppings.includes(top)) {
-      state.selectedPizza.toppings.pop()
-    } else {
+      const index = state.selectedPizza.toppings.indexOf(top)
+      state.selectedPizza.toppings.splice(index, 1)
+    } else if (state.selectedPizza.toppings.length < 3) {
       state.selectedPizza.toppings.push(top)
     }
   }

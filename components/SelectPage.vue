@@ -29,13 +29,13 @@
               Select Size
             </h5>
             <div class="row">
-              <button class="select brown" @click="selectSize('regular')">
+              <button class="select brown" :class="getActiveSize('regular')" @click="selectSize('regular'), sizeId = 'regular'">
                 <span class="button-text">Regular</span>
               </button>
-              <button class="select brown" @click="selectSize('thin')">
+              <button class="select brown" :class="getActiveSize('thin')" @click="selectSize('thin'), sizeId = 'thin'">
                 <span class="button-text">Thin</span>
               </button>
-              <button class="select brown" @click="selectSize('large')">
+              <button class="select brown" :class="getActiveSize('large')" @click="selectSize('large'), sizeId = 'large'">
                 <span class="button-text">Large</span>
               </button>
             </div>
@@ -44,8 +44,8 @@
             <h5 class="brown semi-bold">
               Select Toppings
             </h5>
-            <div class="toppings">
-              <button v-for="(topping, index) in toppings" :key="index" class="topping" @click="addTopping(topping)">
+            <div class="toppings" role="group">
+              <button v-for="(topping, index) in toppings" :key="index" class="topping" :class="getActiveClass(topping.name)" @click="addTopping(topping), makeActive(topping.name)">
                 <p class="brown topping-price">
                   N{{ topping.price }}
                 </p>
@@ -85,24 +85,44 @@ export default {
   emits: ['togglePage'],
   data () {
     return {
-
+      activeId: [],
+      sizeId: 'regular'
     }
   },
   computed: {
     ...mapState(['selectPageIsOpen', 'selectedPizza', 'toppings']),
-    ...mapGetters(['selectedItemTotal']),
-    sizeButton () {
-      let toppingClicked = 0
-      toppingClicked++
-      if (toppingClicked % 2 === 0) {
-        return true
-      } else {
-        return false
-      }
-    }
+    ...mapGetters(['selectedItemTotal'])
   },
   methods: {
-    ...mapMutations(['toggleSelectFromSelect', 'addToCart', 'selectSize', 'addTopping'])
+    ...mapMutations(['toggleSelectFromSelect', 'addToCart', 'selectSize', 'addTopping']),
+    getActiveClass (id) {
+      const foundItem = this.activeId.find((item) => {
+        return item === id
+      })
+      if (foundItem) {
+        return 'active'
+      } else {
+        return ''
+      }
+    },
+    getActiveSize (id) {
+      if (id === this.sizeId) {
+        return 'active'
+      } else {
+        return ''
+      }
+    },
+    makeActive (id) {
+      const foundItem = this.activeId.find((item) => {
+        return item === id
+      })
+      if (foundItem) {
+        const index = this.activeId.indexOf(id)
+        this.activeId.splice(index, 1)
+      } else if (this.activeId.length !== 3 && !foundItem) {
+        this.activeId.push(id)
+      }
+    }
   }
 }
 </script>
@@ -188,10 +208,11 @@ div.total {
 }
 button:focus,
 button:hover,
-button:active {
+button:active,
+button:visited {
   outline: #58EE9E solid 1px;
 }
-.outline {
+.active {
   outline: #58EE9E solid 1px;
 }
 @media (max-width: 768px) {
