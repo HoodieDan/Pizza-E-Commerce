@@ -65,7 +65,7 @@
             </h2>
           </div>
         </div>
-        <button class="btn add-to-cart" @click="addToCart">
+        <button class="btn add-to-cart" @click="addToCart, clearActive">
           ADD TO CART
         </button>
       </div>
@@ -122,6 +122,9 @@ export default {
       } else if (this.activeId.length !== 3 && !foundItem) {
         this.activeId.push(id)
       }
+    },
+    clearActive () {
+      this.activeId = []
     }
   }
 }
