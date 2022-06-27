@@ -186,6 +186,11 @@ div.total {
   position: relative;
   left: 60%;
 }
+button:focus,
+button:hover,
+button:active {
+  outline: #58EE9E solid 1px;
+}
 .outline {
   outline: #58EE9E solid 1px;
 }

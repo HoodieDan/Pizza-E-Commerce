@@ -58,7 +58,19 @@
               </div>
             </div>
           </div>
-          <p>total : N{{ itemTotal }}</p>
+          <div class="cart-bottom">
+            <div class="total">
+              <p>Total:</p>
+              <h2 class="brown semi-bold">
+                N{{ itemTotal }}
+              </h2>
+            </div>
+            <div class="checkout">
+              <button class="btn">
+                CHECKOUT
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </aside>
@@ -211,6 +223,10 @@ button:focus,
 button:hover,
 button.active {
     outline: solid 2px #58EE9E;
+}
+div.cart-bottom {
+  display: flex;
+  justify-content: space-between;
 }
 @media (max-width: 768px) {
   aside.cart {

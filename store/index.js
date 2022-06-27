@@ -326,10 +326,12 @@ export const mutations = {
   },
   addTopping (state, topping) {
     const top = state.toppings.find((item) => {
-      return item === topping
+      return item.name === topping.name
     })
-    if (top && (state.selectedPizza.toppings.length < 3)) {
-      state.selectedPizza.toppings.push({ ...top })
+    if (state.selectedPizza.toppings.includes(top)) {
+      state.selectedPizza.toppings.pop()
+    } else {
+      state.selectedPizza.toppings.push(top)
     }
   }
 }
