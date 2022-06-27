@@ -6,74 +6,171 @@ export const state = () => ({
     {
       name: 'MARGHERITA',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 3400,
-      image: '',
-      size: '',
+      image: require('../assets/images/margherita.png'),
       quantity: 1,
-      toppings: []
+      toppings: [],
+      size: 'regular',
+      regular: {
+        price: 3400
+      },
+      thin: {
+        price: 3000
+      },
+      large: {
+        price: 4000
+      }
     },
     {
-      name: 'LIGHT CHEESE',
+      name: 'CHICKEN CURRY',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 3000,
-      image: '',
-      size: '',
+      image: require('../assets/images/chicken-curry.png'),
       quantity: 1,
-      toppings: []
+      toppings: [],
+      size: 'regular',
+      regular: {
+        price: 3000
+      },
+      thin: {
+        price: 2600
+      },
+      large: {
+        price: 4000
+      }
     },
     {
-      name: 'SUYA PIZZA',
+      name: 'VEGGIE OVERLOAD',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 3200,
-      image: '',
-      size: '',
+      image: require('../assets/images/veggie-overload.png'),
       quantity: 1,
-      toppings: []
+      toppings: [],
+      size: 'regular',
+      regular: {
+        price: 3200
+      },
+      thin: {
+        price: 2600
+      },
+      large: {
+        price: 4000
+      }
     },
     {
       name: 'PEPPERONI',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 3200,
-      image: '',
-      size: '',
+      image: require('../assets/images/pepperoni.png'),
       quantity: 1,
-      toppings: []
+      toppings: [],
+      size: 'regular',
+      regular: {
+        price: 3000
+      },
+      thin: {
+        price: 2600
+      },
+      large: {
+        price: 4000
+      }
     },
     {
       name: 'HAWAIIAN',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 3400,
-      image: '',
-      size: '',
+      image: require('../assets/images/hawaiian.png'),
       quantity: 1,
-      toppings: []
+      toppings: [],
+      size: 'regular',
+      regular: {
+        price: 3000
+      },
+      thin: {
+        price: 2600
+      },
+      large: {
+        price: 4000
+      }
     },
     {
       name: 'SUPER MEATY',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 3000,
-      image: '',
-      size: '',
+      image: require('../assets/images/super-meaty.png'),
       quantity: 1,
-      toppings: []
+      toppings: [],
+      size: 'regular',
+      regular: {
+        price: 3000
+      },
+      thin: {
+        price: 2600
+      },
+      large: {
+        price: 4000
+      }
     },
     {
       name: 'MEATY BBQ',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 3200,
-      image: '',
-      size: '',
+      image: require('../assets/images/meaty-bbq.png'),
       quantity: 1,
-      toppings: []
+      toppings: [],
+      size: 'regular',
+      regular: {
+        price: 3200
+      },
+      thin: {
+        price: 2600
+      },
+      large: {
+        price: 4000
+      }
     },
     {
       name: 'CHEESY CHICKEN',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
-      price: 3200,
-      image: '',
-      size: '',
+      image: require('../assets/images/cheesy-chicken.png'),
       quantity: 1,
-      toppings: []
+      toppings: [],
+      size: 'regular',
+      regular: {
+        price: 3000
+      },
+      thin: {
+        price: 2800
+      },
+      large: {
+        price: 4200
+      }
+    }
+  ],
+  selectedTopping: {},
+  toppings: [
+    {
+      name: 'onions',
+      price: 200,
+      image: require('../assets/images/onions.png')
+    },
+    {
+      name: 'chicken',
+      price: 600,
+      image: require('../assets/images/chicken.png')
+    },
+    {
+      name: 'sausage',
+      price: 400,
+      image: require('../assets/images/sausage.png')
+    },
+    {
+      name: 'mozzarella',
+      price: 300,
+      image: require('../assets/images/mozzarella.png')
+    },
+    {
+      name: 'chilli',
+      price: 250,
+      image: require('../assets/images/chilli-peppers.png')
+    },
+    {
+      name: 'mushrooms',
+      price: 200,
+      image: require('../assets/images/mushrooms.png')
     }
   ],
   selectedPizza: {},
@@ -138,11 +235,30 @@ export const getters = {
     let prices = 0
     let toppingsPrice = 0
     state.cartItems.forEach((item) => {
-      prices += (item.price * item.quantity)
-      toppingsPrice += (item.toppings.length * 600)
+      prices += (item[item.size].price * item.quantity)
+      item.toppings.forEach((topping) => {
+        toppingsPrice += (topping.price * item.quantity)
+      })
     })
     const sum = prices + toppingsPrice
     return sum
+  },
+  selectedItemTotal (state) {
+    let pizzaPrice = 0
+    if (state.selectedPizza[state.selectedPizza.size]) {
+      pizzaPrice += state.selectedPizza[state.selectedPizza.size].price
+    }
+    let toppingTotal = 0
+    if (state.selectedPizza.toppings) {
+      state.selectedPizza.toppings.forEach((item) => {
+        toppingTotal += item.price
+      })
+    }
+    const sum = pizzaPrice + toppingTotal
+    return sum
+  },
+  cartItemTotal (getters) {
+    return getters.selectedItemTotal
   }
 }
 
@@ -154,7 +270,7 @@ export const mutations = {
   },
   toggleSelect (state, pizza) {
     state.selectPageIsOpen = !state.selectPageIsOpen
-    state.selectedPizza = pizza
+    state.selectedPizza = { ...pizza }
   },
   toggleCart (state) {
     state.cartIsOpen = !state.cartIsOpen
@@ -164,35 +280,56 @@ export const mutations = {
     state.selectedPizza = {}
   },
   addToCart (state) {
-    if (state.cartItems.includes(state.selectedPizza)) {
-      state.selectedPizza.quantity++
+    let cartItem = { ...state.selectedPizza }
+    const inCart = state.cartItems.find((item) => {
+      return ((JSON.stringify(item.toppings.sort()) === JSON.stringify(state.selectedPizza.toppings.sort())) &&
+       ((item.size) === (state.selectedPizza.size)) &&
+       ((item.name) === (state.selectedPizza.name)))
+    })
+    if (inCart) {
+      inCart.quantity++
     } else {
-      state.cartItems.push(state.selectedPizza)
+      state.cartItems.push(cartItem)
+      cartItem = {}
     }
+    state.selectedPizza.toppings = []
     state.cartIsOpen = true
   },
   removeFromCart (state, order) {
     const foundItem = state.cartItems.find((item) => {
-      return item.name === order
+      return (JSON.stringify(item) === JSON.stringify(order))
     })
     foundItem.quantity = 1
+    foundItem.toppings = []
     const index = state.cartItems.indexOf(foundItem)
     state.cartItems.splice(index, 1)
   },
   increaseQuantity (state, order) {
     const foundItem = state.cartItems.find((item) => {
-      return item.name === order
+      return (JSON.stringify(item) === JSON.stringify(order))
     })
     foundItem.quantity++
   },
   reduceQuantity (state, order) {
     const foundItem = state.cartItems.find((item) => {
-      return item.name === order
+      return (JSON.stringify(item) === JSON.stringify(order))
     })
     foundItem.quantity--
     if (foundItem.quantity === 0) {
       const index = state.cartItems.indexOf(foundItem)
       state.cartItems.splice(index, 1)
+      foundItem.quantity = 1
+    }
+  },
+  selectSize (state, size) {
+    state.selectedPizza.size = size
+  },
+  addTopping (state, topping) {
+    const top = state.toppings.find((item) => {
+      return item === topping
+    })
+    if (top && (state.selectedPizza.toppings.length < 3)) {
+      state.selectedPizza.toppings.push({ ...top })
     }
   }
 }

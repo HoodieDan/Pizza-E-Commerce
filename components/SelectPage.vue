@@ -29,13 +29,13 @@
               Select Size
             </h5>
             <div class="row">
-              <button class="select brown">
+              <button class="select brown" @click="selectSize('regular')">
                 <span class="button-text">Regular</span>
               </button>
-              <button class="select brown">
+              <button class="select brown" @click="selectSize('thin')">
                 <span class="button-text">Thin</span>
               </button>
-              <button class="select brown">
+              <button class="select brown" @click="selectSize('large')">
                 <span class="button-text">Large</span>
               </button>
             </div>
@@ -45,53 +45,23 @@
               Select Toppings
             </h5>
             <div class="toppings">
-              <button class="topping">
-                <img src="../assets/images/onions.png" alt="onions">
-                <p class="brown">
-                  Onions
+              <button v-for="(topping, index) in toppings" :key="index" class="topping" @click="addTopping(topping)">
+                <p class="brown topping-price">
+                  N{{ topping.price }}
                 </p>
-              </button>
-              <button class="topping">
-                <img src="../assets/images/chicken.png" alt="chicken">
+                <img class="topping-image" :src="topping.image" :alt="topping.name">
                 <p class="brown">
-                  Chicken
-                </p>
-              </button>
-              <button class="topping">
-                <img src="../assets/images/sausage.png" alt="sausage">
-                <p class="brown">
-                  Sausage
-                </p>
-              </button>
-              <button class="topping">
-                <img src="../assets/images/onions.png" alt="onions">
-                <p class="brown">
-                  Onions
-                </p>
-              </button>
-              <button class="topping">
-                <img src="../assets/images/chicken.png" alt="chicken">
-                <p class="brown">
-                  Chicken
-                </p>
-              </button>
-              <button class="topping">
-                <img src="../assets/images/sausage.png" alt="sausage">
-                <p class="brown">
-                  Sausage
+                  {{ topping.name }}
                 </p>
               </button>
             </div>
-            <p class="brown">
-              *note that toppings cost N600 for each topping selected.
-            </p>
           </div>
           <div class="total">
             <h6 class="brown">
               Total:
             </h6>
-            <h2 class="brown semi-bold">
-              N{{ selectedPizza.price }}
+            <h2 v-if="selectedItemTotal" class="brown semi-bold">
+              N{{ selectedItemTotal }}
             </h2>
           </div>
         </div>
@@ -113,12 +83,26 @@ export default {
     selected: Object
   },
   emits: ['togglePage'],
+  data () {
+    return {
+
+    }
+  },
   computed: {
-    ...mapState(['selectPageIsOpen', 'selectedPizza']),
-    ...mapGetters(['selectedItemTotal'])
+    ...mapState(['selectPageIsOpen', 'selectedPizza', 'toppings']),
+    ...mapGetters(['selectedItemTotal']),
+    sizeButton () {
+      let toppingClicked = 0
+      toppingClicked++
+      if (toppingClicked % 2 === 0) {
+        return true
+      } else {
+        return false
+      }
+    }
   },
   methods: {
-    ...mapMutations(['toggleSelectFromSelect', 'addToCart'])
+    ...mapMutations(['toggleSelectFromSelect', 'addToCart', 'selectSize', 'addTopping'])
   }
 }
 </script>
@@ -185,7 +169,15 @@ button.topping {
   border: #DED8D8 1px solid;
   border-radius: 5px;
   margin: 5px;
-  height: 95px;
+  height: 115px;
+  width: 115px !important;
+}
+img.topping-image {
+  max-height: 51px;
+  max-width: 77px;
+}
+p.topping-price {
+  margin-bottom: 0 !important;
 }
 div.total {
   margin-top: 20px;
@@ -193,6 +185,9 @@ div.total {
 .add-to-cart {
   position: relative;
   left: 60%;
+}
+.outline {
+  outline: #58EE9E solid 1px;
 }
 @media (max-width: 768px) {
   button.close-modal {

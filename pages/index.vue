@@ -61,8 +61,6 @@ div.content {
   text-align: left !important;
 }
 .pizzas img {
-  margin-top: -20px;
-  right: 20px;
   bottom: 10px;
   position: relative;
 }

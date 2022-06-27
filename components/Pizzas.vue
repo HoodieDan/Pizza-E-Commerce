@@ -8,14 +8,16 @@
         <button class="pizza-button" @click.prevent="toggleSelect(pizza)">
           <div class="card pizzas brown">
             <div class="pizza-image">
-              <img src="../assets/images/pizza-pizza.png" alt="pizza img">
+              <img :src="pizza.image" alt="pizza img">
             </div>
             <div class="content">
               <h5>{{ pizza.name }}</h5>
               <p class="pizza-p">
                 {{ pizza.ingredients }}
               </p>
-              <h5><span class="from">from</span>N{{ pizza.price }}</h5>
+              <h5 v-if="pizza.regular">
+                <span class="from">from</span>N{{ pizza.regular.price }}
+              </h5>
             </div>
           </div>
         </button>
@@ -56,6 +58,7 @@ export default {
 <style scoped>
 img {
   transform: scale(0.8);
+  max-width: 100%;
 }
 button {
   border: none;

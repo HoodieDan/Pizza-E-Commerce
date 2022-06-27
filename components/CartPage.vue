@@ -8,6 +8,12 @@
         <h2 class="brown semi-bold cart-header">
           CART
         </h2>
+        <div class="cart-bg text-center my-auto">
+          <img src="../assets/images/cart-bg.png" alt="empty cart bg">
+          <h2 class="brown semi-bold">
+            Cart is Empty!
+          </h2>
+        </div>
       </div>
     </aside>
 
@@ -25,29 +31,29 @@
               <img src="../assets/images/cart-pizza-pic.png" alt="selected pizza" class="cart-pizza-pic">
             </div>
             <div class="order">
-              <button class="btn remove-pizza" @click="removeFromCart(cartItem.name)">
+              <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
                 x
               </button>
               <h5 class="semi-bold">
                 {{ cartItem.name }}
               </h5>
-              <p>Regular, Onion</p>
+              <p>{{ cartItem.size }}, <span v-for="(topping, i) in cartItem.toppings" :key="i"> {{ topping.name }},</span></p>
             </div>
             <div class="quantity-and-price">
               <div class="quantity d-flex">
-                <button class="white-btn-outline" @click="reduceQuantity(cartItem.name)">
+                <button class="white-btn-outline" @click="reduceQuantity(cartItem)">
                   -
                 </button>
                 <p class="pizza-quantity">
                   {{ cartItem.quantity }}
                 </p>
-                <button class="brown-btn-outline" @click="increaseQuantity(cartItem.name)">
+                <button class="brown-btn-outline" @click="increaseQuantity(cartItem)">
                   +
                 </button>
               </div>
               <div class="price">
-                <h5 class="semi-bold">
-                  N{{ cartItem.price }}
+                <h5 v-if="cartItemTotal" class="semi-bold">
+                  N{{ cartItemTotal }}
                 </h5>
               </div>
             </div>
@@ -65,7 +71,7 @@ import { mapGetters, mapMutations, mapState } from 'vuex'
 export default {
   name: 'CartPage',
   computed: {
-    ...mapGetters(['cartItemsLength', 'itemTotal']),
+    ...mapGetters(['cartItemsLength', 'itemTotal', 'cartItemTotal']),
     ...mapState(['cartItems'])
   },
   methods: {
@@ -127,17 +133,10 @@ h2.cart-header {
   margin-left: 10px;
 }
 aside.cart.empty {
-  background: url('../assets/images/cart-bg.png') no-repeat;
-  background-color: #FFF;
-  background-position: center center;
   z-index: 20;
 }
-aside.cart.empty:after {
-  margin: 1% auto;
-  font-size: 1.75rem;
-  content: "Cart is Empty!";
-  color: #5D3801;
-  z-index: -1;
+div.cart-bg {
+  vertical-align: middle;
 }
 div.cart-card {
   width: 95%;
@@ -197,7 +196,7 @@ div.items {
 }
 .btn.remove-pizza {
   height: 20px;
-  width: 10px;
+  width: 5px;
   display: flex;
   justify-content: center;
 }
