@@ -1,7 +1,7 @@
 <template>
   <section id="desserts" class="container">
     <h3 class="index-header brown">
-      Sides
+      Desserts
     </h3>
     <div class="row">
       <div v-for="(dessert, index) in desserts" :key="index" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
