@@ -28,7 +28,7 @@
         <div class="items">
           <div v-for="(cartItem, index) in cartItems" :key="index" class="cart-card d-flex">
             <div class="image">
-              <img src="../assets/images/cart-pizza-pic.png" alt="selected pizza" class="cart-pizza-pic">
+              <img :src="cartItem.image" alt="selected pizza" class="cart-pizza-pic">
             </div>
             <div class="order">
               <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
@@ -160,8 +160,8 @@ div.cart-card {
   margin: 20px 0;
 }
 img.cart-pizza-pic {
-  height: 80px;
-  width: 80px;
+  max-height: 80px;
+  max-width: 80px;
   margin-right: 10px;
 }
 div.quantity-and-price {

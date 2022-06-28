@@ -65,7 +65,7 @@
             </h2>
           </div>
         </div>
-        <button class="btn add-to-cart" @click="addToCart, clearActive">
+        <button class="btn add-to-cart" @click="addToCart(); activeId = []">
           ADD TO CART
         </button>
       </div>

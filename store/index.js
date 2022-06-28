@@ -179,49 +179,49 @@ export const state = () => ({
       name: 'COCA-COLA',
       description: '33cl Orginal Taste',
       price: 300,
-      image: 'coke.png'
+      image: require('../assets/images/coke.png')
     },
     {
       name: 'FANTA',
       description: '33cl Original Taste',
       price: 300,
-      image: '../assets/images/coke.png'
+      image: require('../assets/images/fanta.png')
     },
     {
       name: 'SPRITE',
       description: '33cl Original Taste',
       price: 300,
-      image: '../assets/images/coke.png'
+      image: require('../assets/images/sprite.png')
     },
     {
-      name: '5ALIVE BERRY BLAST',
-      description: '85cl Original Taste',
-      price: 800,
-      image: '../assets/images/coke.png'
+      name: '7-UP',
+      description: '33cl Original Taste',
+      price: 250,
+      image: require('../assets/images/7up.png')
     },
     {
-      name: 'COCA-COLA',
+      name: 'NESTLE WATER',
+      description: '33cl Orginal Taste',
+      price: 250,
+      image: require('../assets/images/nestle-water.png')
+    },
+    {
+      name: 'HEINEKEN',
       description: '33cl Orginal Taste',
       price: 300,
-      image: 'coke.png'
+      image: require('../assets/images/heineken.png')
     },
     {
-      name: 'COCA-COLA',
+      name: 'PEPSI',
       description: '33cl Orginal Taste',
       price: 300,
-      image: 'coke.png'
+      image: require('../assets/images/pepsi.png')
     },
     {
-      name: 'COCA-COLA',
+      name: 'MONSTER ENERGY',
       description: '33cl Orginal Taste',
       price: 300,
-      image: 'coke.png'
-    },
-    {
-      name: 'COCA-COLA',
-      description: '33cl Orginal Taste',
-      price: 300,
-      image: 'coke.png'
+      image: require('../assets/images/monster-energy.png')
     }
   ],
   cartItems: []
@@ -258,7 +258,7 @@ export const getters = {
     return sum
   },
   cartItemTotal (getters) {
-    return getters.selectedItemTotal
+    return (getters.selectedItemTotal)
   }
 }
 

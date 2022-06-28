@@ -8,7 +8,7 @@
         <button class="drinks-button">
           <div class="card drinks brown">
             <div class="drink-image">
-              <img class="drink" src="../assets/images/coke.png" :alt="'drink img'">
+              <img class="drink" :class="drink.name" :src="drink.image" :alt="'drink img'">
             </div>
             <div class="content">
               <div>
@@ -53,6 +53,13 @@ button {
 }
 button:last-child {
     padding: 10px;
+}
+img.drink {
+  max-height: 205px;
+  max-width: 205px;
+}
+img.FANTA {
+  margin-top: 20px;
 }
 .drinks-button {
   padding: 0 !important;
