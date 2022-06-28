@@ -16,8 +16,8 @@
         <template #img>
           <img
             width="100%"
-            height="550px"
-            src="../assets/images/home-ad.png"
+            height="100%"
+            src="../assets/images/pexels-1.jpg"
             alt="image slot"
           >
         </template>
@@ -28,8 +28,8 @@
         <template #img>
           <img
             width="100%"
-            height="550px"
-            src="../assets/images/home-ad.png"
+            height="100%"
+            src="../assets/images/pexels-2.jpg"
             alt="image slot"
           >
         </template>
@@ -40,8 +40,8 @@
         <template #img>
           <img
             width="100%"
-            height="550px"
-            src="../assets/images/home-ad.png"
+            height="100%"
+            src="../assets/images/pexels-3.jpg"
             alt="image slot"
           >
         </template>

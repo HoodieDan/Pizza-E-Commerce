@@ -70,13 +70,23 @@
     </div>
 
     <!-- mobile navigation  -->
-    <aside class="mobile-nav" :class="{ 'leave-animation': navIsOpen === false, 'invisible': clicked === 0, }">
-      <a class="navbar-link mono block" href="#">PIZZAS</a>
-      <a class="navbar-link mono block" href="#">DRINKS</a>
-      <a class="navbar-link mono block" href="#">SIDES</a>
-      <a class="navbar-link mono block" href="#">DESSERTS</a>
-      <a class="navbar-link mono block" href="#">PASTAS</a>
-    </aside>
+    <div
+      v-show="navIsOpen"
+      class="backdrop"
+      @wheel.self.prevent
+      @touchmove.self.prevent
+      @scroll.self.prevent
+      @touch.self="toggleNav"
+      @click.self="toggleNav"
+    >
+      <aside class="mobile-nav" :class="{ 'leave-animation': navIsOpen === false, 'invisible': clicked === 0, }">
+        <a class="navbar-link mono block" href="#">PIZZAS</a>
+        <a class="navbar-link mono block" href="#">DRINKS</a>
+        <a class="navbar-link mono block" href="#">SIDES</a>
+        <a class="navbar-link mono block" href="#">DESSERTS</a>
+        <a class="navbar-link mono block" href="#">PASTAS</a>
+      </aside>
+    </div>
 
     <SignInVue v-show="signInIsOpen" @toggle-sign="toggleSignIn" />
     <cart-page v-show="cartIsOpen" />
@@ -132,7 +142,7 @@ nav {
   color: #FFF !important;
   display: flex;
   justify-content: center;
-  position: relative;
+  position: fixed;
   width: 100%;
   padding: 15px;
 }
@@ -182,6 +192,19 @@ div button {
 .navbar-link:focus,
 .navbar-link.active {
   color: #58EE9E;
+}
+div.backdrop {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 100;
 }
 aside.mobile-nav {
   display: flex;
@@ -250,7 +273,7 @@ span.top-bar {
   border-radius: 32px;
 }
 .increase-index {
-  z-index: 40;
+  z-index: 102;
 }
 span.middle-bar {
   opacity: 1;
