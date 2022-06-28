@@ -25,7 +25,7 @@
         </div>
       </aside>
 
-      <aside v-show="cartItemsLength > 0" class="cart">
+      <aside v-show="cartItemsLength > 0 || drinksItemsLength > 0" class="cart">
         <div class="head">
           <button class="close-modal btn" @click="toggleCart">
             <i class="fa-solid fa-xmark" />
@@ -34,7 +34,7 @@
             CART
           </h2>
           <div class="items">
-            <div v-for="(cartItem, index) in cartItems" :key="index" class="cart-card d-flex">
+            <div v-for="(cartItem, index) in cartItems.pizza" :key="index" class="cart-card d-flex">
               <div class="image">
                 <img :src="cartItem.image" alt="selected pizza" class="cart-pizza-pic">
               </div>
@@ -66,21 +66,53 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="cart-bottom">
-            <div class="total">
-              <p>Total:</p>
-              <h2 class="brown semi-bold">
-                N{{ itemTotal }}
-              </h2>
-            </div>
-            <div class="checkout">
-              <nuxt-link to="/CheckoutPage">
-                <button class="btn">
-                  CHECKOUT
+            <div v-for="(cartItem, index) in cartItems.drink" :key="index" class="cart-card d-flex">
+              <div class="image">
+                <img :src="cartItem.image" alt="selected pizza" class="cart-pizza-pic">
+              </div>
+              <div class="order">
+                <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
+                  x
                 </button>
-              </nuxt-link>
+                <h5 class="semi-bold">
+                  {{ cartItem.name }}
+                </h5>
+                <p>{{ cartItem.description }}</p>
+              </div>
+              <div class="quantity-and-price">
+                <div class="quantity d-flex">
+                  <button class="white-btn-outline" @click="reduceQuantity(cartItem)">
+                    -
+                  </button>
+                  <p class="pizza-quantity">
+                    {{ cartItem.quantity }}
+                  </p>
+                  <button class="brown-btn-outline" @click="increaseQuantity(cartItem)">
+                    +
+                  </button>
+                </div>
+                <div class="price">
+                  <h5 v-if="cartItemTotal" class="semi-bold">
+                    N{{ cartItemTotal }}
+                  </h5>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+        <div class="cart-bottom">
+          <div class="total">
+            <p>Total:</p>
+            <h2 class="brown semi-bold">
+              N{{ itemTotal }}
+            </h2>
+          </div>
+          <div class="checkout">
+            <nuxt-link to="/CheckoutPage">
+              <button class="btn">
+                CHECKOUT
+              </button>
+            </nuxt-link>
           </div>
         </div>
       </aside>
@@ -94,7 +126,7 @@ import { mapGetters, mapMutations, mapState } from 'vuex'
 export default {
   name: 'CartPage',
   computed: {
-    ...mapGetters(['cartItemsLength', 'itemTotal', 'cartItemTotal']),
+    ...mapGetters(['cartItemsLength', 'drinksItemsLength', 'itemTotal', 'cartItemTotal']),
     ...mapState(['cartItems'])
   },
   methods: {
@@ -227,9 +259,12 @@ div.price {
   bottom: 0px;
   right: 15px;
 }
+div.head {
+  height: 100% !important;
+}
 div.items {
   overflow-y: auto;
-  height: 65%;
+  height: 65% !important;
 }
 .btn.remove-pizza {
   height: 20px;

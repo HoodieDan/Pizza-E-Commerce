@@ -4,7 +4,7 @@ export const state = () => ({
   cartIsOpen: false,
   pizzas: [
     {
-      category: 'Pizza',
+      category: 'pizza',
       name: 'MARGHERITA',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/margherita.png'),
@@ -22,7 +22,7 @@ export const state = () => ({
       }
     },
     {
-      category: 'Pizza',
+      category: 'pizza',
       name: 'CHICKEN CURRY',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/chicken-curry.png'),
@@ -40,7 +40,7 @@ export const state = () => ({
       }
     },
     {
-      category: 'Pizza',
+      category: 'pizza',
       name: 'VEGGIE OVERLOAD',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/veggie-overload.png'),
@@ -58,7 +58,7 @@ export const state = () => ({
       }
     },
     {
-      category: 'Pizza',
+      category: 'pizza',
       name: 'PEPPERONI',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/pepperoni.png'),
@@ -76,7 +76,7 @@ export const state = () => ({
       }
     },
     {
-      category: 'Pizza',
+      category: 'pizza',
       name: 'HAWAIIAN',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/hawaiian.png'),
@@ -94,7 +94,7 @@ export const state = () => ({
       }
     },
     {
-      category: 'Pizza',
+      category: 'pizza',
       name: 'SUPER MEATY',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/super-meaty.png'),
@@ -112,7 +112,7 @@ export const state = () => ({
       }
     },
     {
-      category: 'Pizza',
+      category: 'pizza',
       name: 'MEATY BBQ',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/meaty-bbq.png'),
@@ -130,7 +130,7 @@ export const state = () => ({
       }
     },
     {
-      category: 'Pizza',
+      category: 'pizza',
       name: 'CHEESY CHICKEN',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/cheesy-chicken.png'),
@@ -184,71 +184,98 @@ export const state = () => ({
   selectedPizza: {},
   drinks: [
     {
+      category: 'drink',
       name: 'COCA-COLA',
+      quantity: 1,
       description: '33cl Orginal Taste',
       price: 300,
       image: require('../assets/images/coke.png')
     },
     {
+      category: 'drink',
       name: 'FANTA',
+      quantity: 1,
       description: '33cl Original Taste',
       price: 300,
       image: require('../assets/images/fanta.png')
     },
     {
+      category: 'drink',
       name: 'SPRITE',
+      quantity: 1,
       description: '33cl Original Taste',
       price: 300,
       image: require('../assets/images/sprite.png')
     },
     {
+      category: 'drink',
       name: '7-UP',
+      quantity: 1,
       description: '33cl Original Taste',
       price: 250,
       image: require('../assets/images/7up.png')
     },
     {
+      category: 'drink',
       name: 'NESTLE WATER',
+      quantity: 1,
       description: '33cl Orginal Taste',
       price: 250,
       image: require('../assets/images/nestle-water.png')
     },
     {
+      category: 'drink',
       name: 'HEINEKEN',
+      quantity: 1,
       description: '33cl Orginal Taste',
       price: 300,
       image: require('../assets/images/heineken.png')
     },
     {
+      category: 'drink',
       name: 'PEPSI',
+      quantity: 1,
       description: '33cl Orginal Taste',
       price: 300,
       image: require('../assets/images/pepsi.png')
     },
     {
+      category: 'drink',
       name: 'MONSTER ENERGY',
+      quantity: 1,
       description: '33cl Orginal Taste',
       price: 300,
       image: require('../assets/images/monster-energy.png')
     }
   ],
-  cartItems: []
+  selectedDrink: {},
+  cartItems: {
+    pizza: [],
+    drink: []
+  }
 })
 
 export const getters = {
-  cartItemsLength (state) {
-    return state.cartItems.length
+  pizzaItemsLength (state) {
+    return state.cartItems.pizza.length
+  },
+  drinksItemsLength (state) {
+    return state.cartItems.drink.length
   },
   itemTotal (state) {
     let prices = 0
     let toppingsPrice = 0
-    state.cartItems.forEach((item) => {
+    let drinksPrice = 0
+    state.cartItems.pizza.forEach((item) => {
       prices += (item[item.size].price * item.quantity)
       item.toppings.forEach((topping) => {
         toppingsPrice += (topping.price * item.quantity)
       })
     })
-    const sum = prices + toppingsPrice
+    state.cartItems.drink.forEach((item) => {
+      drinksPrice += item.price
+    })
+    const sum = prices + toppingsPrice + drinksPrice
     return sum
   },
   selectedItemTotal (state) {
@@ -280,6 +307,9 @@ export const mutations = {
     state.selectPageIsOpen = !state.selectPageIsOpen
     state.selectedPizza = { ...pizza }
   },
+  selectDrink (state, drink) {
+    state.selectedDrink = { ...drink }
+  },
   toggleCart (state) {
     state.cartIsOpen = !state.cartIsOpen
   },
@@ -289,43 +319,58 @@ export const mutations = {
   },
   addToCart (state) {
     let cartItem = { ...state.selectedPizza }
-    const inCart = state.cartItems.find((item) => {
-      return ((JSON.stringify(item.toppings.sort()) === JSON.stringify(state.selectedPizza.toppings.sort())) &&
-       ((item.size) === (state.selectedPizza.size)) &&
-       ((item.name) === (state.selectedPizza.name)))
-    })
-    if (inCart) {
-      inCart.quantity++
-    } else {
-      state.cartItems.push(cartItem)
-      cartItem = {}
+    if (state.drinks.length !== 0) {
+      const inCart = state.cartItems[cartItem.category].find((item) => {
+        return ((JSON.stringify(item.toppings.sort()) === JSON.stringify(state.selectedPizza.toppings.sort())) &&
+         ((item.size) === (state.selectedPizza.size)) &&
+         ((item.name) === (state.selectedPizza.name)))
+      })
+      if (inCart) {
+        inCart.quantity++
+      } else {
+        state.cartItems[state.selectedPizza.category].push(cartItem)
+        cartItem = {}
+      }
     }
     state.selectedPizza.toppings = []
     state.cartIsOpen = true
   },
+  addOthersToCart (state, order) {
+    if (state.drinks.length !== 0) {
+      const inCart = state.cartItems[order.category].find((item) => {
+        return ((item.name) === (state.selectedPizza.name))
+      })
+      if (inCart) {
+        inCart.quantity++
+      } else {
+        state.cartItems[order.category].push(order)
+      }
+    }
+    state.cartIsOpen = true
+  },
   removeFromCart (state, order) {
-    const foundItem = state.cartItems.find((item) => {
+    const foundItem = state.cartItems[order.category].find((item) => {
       return (JSON.stringify(item) === JSON.stringify(order))
     })
     foundItem.quantity = 1
     foundItem.toppings = []
-    const index = state.cartItems.indexOf(foundItem)
-    state.cartItems.splice(index, 1)
+    const index = state.cartItems[order.category].indexOf(foundItem)
+    state.cartItems[order.category].splice(index, 1)
   },
   increaseQuantity (state, order) {
-    const foundItem = state.cartItems.find((item) => {
+    const foundItem = state.cartItems[order.category].find((item) => {
       return (JSON.stringify(item) === JSON.stringify(order))
     })
     foundItem.quantity++
   },
   reduceQuantity (state, order) {
-    const foundItem = state.cartItems.find((item) => {
+    const foundItem = state.cartItems[order.category].find((item) => {
       return (JSON.stringify(item) === JSON.stringify(order))
     })
     foundItem.quantity--
     if (foundItem.quantity === 0) {
-      const index = state.cartItems.indexOf(foundItem)
-      state.cartItems.splice(index, 1)
+      const index = state.cartItems[order.category].indexOf(foundItem)
+      state.cartItems[order.category].splice(index, 1)
       foundItem.quantity = 1
     }
   },

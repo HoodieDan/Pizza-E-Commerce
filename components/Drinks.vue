@@ -5,7 +5,7 @@
     </h3>
     <div class="row">
       <div v-for="(drink, index) in drinks" :key="index" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-        <button class="drinks-button">
+        <button class="drinks-button" @click="selectDrink(), addOthersToCart(drink)">
           <div class="card drinks brown">
             <div class="drink-image">
               <img class="drink" :class="drink.name" :src="drink.image" :alt="'drink img'">
@@ -34,13 +34,16 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Drinks',
   computed: {
     ...mapState(['drinks'])
+  },
+  methods: {
+    ...mapMutations(['selectDrink', 'addOthersToCart'])
   }
 }
 </script>
