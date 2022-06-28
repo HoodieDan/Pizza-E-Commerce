@@ -334,7 +334,6 @@ span.bottom-bar {
   }
   button.navbar-toggle {
     display: block;
-    margin-right: 10px;
   }
   .toggler-icon {
     display: block;
