@@ -73,9 +73,9 @@
     <div
       v-show="navIsOpen"
       class="backdrop"
-      @wheel.self.prevent
-      @touchmove.self.prevent
-      @scroll.self.prevent
+      @wheel.prevent
+      @touchmove.prevent
+      @scroll.prevent
       @touch.self="toggleNav"
       @click.self="toggleNav"
     >

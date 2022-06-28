@@ -1,6 +1,7 @@
 <template>
   <div
     class="backdrop"
+    :class="{'no-scroll-lg': cartIsOpen}"
     @wheel.self.prevent
     @touchmove.self.prevent
     @scroll.self.prevent
