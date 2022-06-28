@@ -4,6 +4,7 @@ export const state = () => ({
   cartIsOpen: false,
   pizzas: [
     {
+      category: 'Pizza',
       name: 'MARGHERITA',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/margherita.png'),
@@ -21,6 +22,7 @@ export const state = () => ({
       }
     },
     {
+      category: 'Pizza',
       name: 'CHICKEN CURRY',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/chicken-curry.png'),
@@ -38,6 +40,7 @@ export const state = () => ({
       }
     },
     {
+      category: 'Pizza',
       name: 'VEGGIE OVERLOAD',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/veggie-overload.png'),
@@ -55,6 +58,7 @@ export const state = () => ({
       }
     },
     {
+      category: 'Pizza',
       name: 'PEPPERONI',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/pepperoni.png'),
@@ -72,6 +76,7 @@ export const state = () => ({
       }
     },
     {
+      category: 'Pizza',
       name: 'HAWAIIAN',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/hawaiian.png'),
@@ -89,6 +94,7 @@ export const state = () => ({
       }
     },
     {
+      category: 'Pizza',
       name: 'SUPER MEATY',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/super-meaty.png'),
@@ -106,6 +112,7 @@ export const state = () => ({
       }
     },
     {
+      category: 'Pizza',
       name: 'MEATY BBQ',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/meaty-bbq.png'),
@@ -123,6 +130,7 @@ export const state = () => ({
       }
     },
     {
+      category: 'Pizza',
       name: 'CHEESY CHICKEN',
       ingredients: 'Cheddar, Marinara Sauce, Mozzarella Cheese, BBQ Sauce, Olives, Red Onions, Green Pepper Sweet Corn, Red Chilli',
       image: require('../assets/images/cheesy-chicken.png'),

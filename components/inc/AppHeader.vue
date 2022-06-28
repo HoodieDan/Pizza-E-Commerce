@@ -134,7 +134,7 @@ nav {
   justify-content: center;
   position: relative;
   width: 100%;
-  padding: 2% 4%;
+  padding: 15px;
 }
 div.navis {
   width: 100%;

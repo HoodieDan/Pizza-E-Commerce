@@ -66,18 +66,20 @@
                 </div>
               </div>
             </div>
-            <div class="cart-bottom">
-              <div class="total">
-                <p>Total:</p>
-                <h2 class="brown semi-bold">
-                  N{{ itemTotal }}
-                </h2>
-              </div>
-              <div class="checkout">
+          </div>
+          <div class="cart-bottom">
+            <div class="total">
+              <p>Total:</p>
+              <h2 class="brown semi-bold">
+                N{{ itemTotal }}
+              </h2>
+            </div>
+            <div class="checkout">
+              <nuxt-link to="/CheckoutPage">
                 <button class="btn">
                   CHECKOUT
                 </button>
-              </div>
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -121,7 +123,7 @@ aside.cart {
   flex-direction: column;
   position: fixed;
   width: min(75vw, 400px);
-  height: 70%;
+  height: 100%;
   right: 0;
   top: 0;
   background-color: #FFF;
@@ -227,6 +229,7 @@ div.price {
 }
 div.items {
   overflow-y: auto;
+  height: 65%;
 }
 .btn.remove-pizza {
   height: 20px;
@@ -249,6 +252,11 @@ button.active {
 div.cart-bottom {
   display: flex;
   justify-content: space-between;
+  position: absolute;
+  bottom: 20px;
+}
+div.checkout {
+  margin-left: 50%;
 }
 @media (max-width: 768px) {
   aside.cart {
