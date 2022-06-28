@@ -24,12 +24,12 @@
             </a>
           </li>
           <li class="navbar-item">
-            <a class="navi-link text-white" to="#desserts">
+            <a class="navi-link text-white" href="#desserts">
               DESSERTS
             </a>
           </li>
           <li class="navbar-item">
-            <a class="navi-link text-white" to="#pastas">
+            <a class="navi-link text-white" href="#pastas">
               PASTAS
             </a>
           </li>
