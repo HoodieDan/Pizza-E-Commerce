@@ -161,18 +161,9 @@ div.navis {
 div.branding {
   margin: auto 0;
 }
-div.mid-nav-links {
-  position: relative;
-  left: 100px;
-}.mid-nav-links {
-  display: flex;
-  align-items: center;
-}
 .right-nav-links {
   padding: 7px 0px;
   display: flex;
-  position: relative;
-  right: 100px;
 }
 ul.navbar-navi {
   display: flex;
@@ -311,30 +302,31 @@ span.bottom-bar {
   display: none;
 }
 @media (min-width: 992px) {
-  .navis {
+  div.mid-nav-links {
+    position: relative;
+    left: 225px;
+    display: flex;
+    align-items: center;
   }
 }
 @media (max-width: 992px) {
-  .right-nav-links {
-    right: 10px;
-  }
-  .mid-nav-links {
-    left: 100px;
+  div.mid-nav-links {
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 170px;
   }
 }
 @media (min-width: 769px) {
   aside.mobile-nav {
     display: none;
   }
-  .right-nav-links {
-    margin-left: 0px !important;
-  }
 }
 @media (max-width: 768px) {
   nav {
     align-items: center;
   }
-  .mid-nav-links {
+  div.mid-nav-links {
     display: none;
   }
   .right-nav-links {
