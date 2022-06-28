@@ -45,6 +45,12 @@ aside::-webkit-scrollbar-thumb {
 .stick {
     position: sticky !important;
 }
-.no-scroll-lg {
+.overflow-y-hidden {
+    overflow-y: hidden !important;
+}
+.overflow-hidden {
     overflow: hidden !important;
+}
+.overflow-x-hidden {
+    overflow-x: hidden !important;
 }

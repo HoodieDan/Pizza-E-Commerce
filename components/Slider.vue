@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: 100vh;">
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -12,7 +12,7 @@
       @sliding-end="onSlideEnd"
     >
       <!-- Slide One -->
-      <b-carousel-slide>
+      <b-carousel-slide style="height: 100vh;">
         <template #img>
           <img
             width="100%"
@@ -24,7 +24,7 @@
       </b-carousel-slide>
 
       <!-- Slides two -->
-      <b-carousel-slide>
+      <b-carousel-slide style="height: 100vh;">
         <template #img>
           <img
             width="100%"
@@ -36,7 +36,7 @@
       </b-carousel-slide>
 
       <!-- Slides with image only -->
-      <b-carousel-slide>
+      <b-carousel-slide style="height: 100vh;">
         <template #img>
           <img
             width="100%"

@@ -249,9 +249,77 @@ export const state = () => ({
     }
   ],
   selectedDrink: {},
+  sides: [
+    {
+      category: 'sides',
+      name: 'POTATO WEDGES',
+      quantity: 1,
+      description: 'Hot potatoes baked in oven',
+      price: 1400,
+      image: require('../assets/images/potato-wedges.png')
+    },
+    {
+      category: 'sides',
+      name: 'BBQ WINGS',
+      quantity: 1,
+      description: 'Baked chicken wings marinated in BBQ sauce 5 pieces',
+      price: 2200,
+      image: require('../assets/images/bbq-wings.png')
+    },
+    {
+      category: 'sides',
+      name: 'SPRING ROLLS',
+      quantity: 1,
+      description: 'Specialty. Small rolls of Dodo dough with mozzarella and cheese sauce 8 pieces',
+      price: 1400,
+      image: require('../assets/images/spring-roll.png')
+    },
+    {
+      category: 'sides',
+      name: 'CHICKEN STRIPS',
+      quantity: 1,
+      description: 'Baked Chicken Strips 4 pieces',
+      price: 1600,
+      image: require('../assets/images/chicken-strips.png')
+    },
+    {
+      category: 'sides',
+      name: 'CHICKEN SHAWARMA',
+      quantity: 1,
+      description: 'Hot baked wrap with chicken, tomatoes, mozzarella and BBQ sauce',
+      price: 1500,
+      image: require('../assets/images/chicken-shawarma.png')
+    },
+    {
+      category: 'sides',
+      name: 'CHEESE GARLIC FOCACCIA',
+      quantity: 1,
+      description: 'Medium (23cm) pizza base with garlic spread and mozzarella',
+      price: 1500,
+      image: require('../assets/images/cheese-garlic-focaccia.png')
+    },
+    {
+      category: 'sides',
+      name: 'COCKTAIL CHEESE GRILLERS',
+      quantity: 1,
+      description: '10 Per portion',
+      price: 1500,
+      image: require('../assets/images/cocktail-cheese-grillers.png')
+    },
+    {
+      category: 'sides',
+      name: 'CRUSHED CHILLI',
+      quantity: 1,
+      description: 'Crushed chilli in a tub',
+      price: 1500,
+      image: require('../assets/images/crushed-chilli.png')
+    }
+  ],
   cartItems: {
     pizza: [],
-    drink: []
+    drink: [],
+    sides: [],
+    desserts: []
   }
 })
 
@@ -262,10 +330,14 @@ export const getters = {
   drinksItemsLength (state) {
     return state.cartItems.drink.length
   },
+  sidesItemsTotal (state) {
+    return state.cartItems.sides.length
+  },
   itemTotal (state) {
     let prices = 0
     let toppingsPrice = 0
     let drinksPrice = 0
+    let sidesPrice = 0
     state.cartItems.pizza.forEach((item) => {
       prices += (item[item.size].price * item.quantity)
       item.toppings.forEach((topping) => {
@@ -273,9 +345,12 @@ export const getters = {
       })
     })
     state.cartItems.drink.forEach((item) => {
-      drinksPrice += item.price
+      drinksPrice += (item.price * item.quantity)
     })
-    const sum = prices + toppingsPrice + drinksPrice
+    state.cartItems.sides.forEach((item) => {
+      sidesPrice += item.price
+    })
+    const sum = prices + toppingsPrice + drinksPrice + sidesPrice
     return sum
   },
   selectedItemTotal (state) {

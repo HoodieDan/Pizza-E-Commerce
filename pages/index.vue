@@ -3,6 +3,7 @@
     <SliderVue />
     <PizzasVue />
     <Drinks />
+    <Sides />
   </div>
 </template>
 
@@ -11,10 +12,11 @@ import { mapState } from 'vuex'
 import SliderVue from '~/components/Slider.vue'
 import PizzasVue from '~/components/Pizzas.vue'
 import Drinks from '~/components/Drinks.vue'
+import Sides from '~/components/Sides.vue'
 
 export default {
   name: 'IndexPage',
-  components: { SliderVue, PizzasVue, Drinks },
+  components: { SliderVue, PizzasVue, Drinks, Sides },
   props: {
     signInIsOpen: Boolean
   },
@@ -54,7 +56,7 @@ div.pizza-image {
 div.content {
   position: relative;
 }
-.pizzas, .drinks {
+.pizzas, .drinks, .sides, .desserts {
   background: url('../assets/images/background.png');
   height: 360px !important;
   position: relative;
