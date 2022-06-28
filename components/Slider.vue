@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100vh;">
+  <div class="slider-wrapper" style="height: 100vh;">
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -12,7 +12,7 @@
       @sliding-end="onSlideEnd"
     >
       <!-- Slide One -->
-      <b-carousel-slide style="height: 100vh;">
+      <b-carousel-slide class="carousel-slide" style="height: 100vh;">
         <template #img>
           <img
             width="100%"
@@ -24,7 +24,7 @@
       </b-carousel-slide>
 
       <!-- Slides two -->
-      <b-carousel-slide style="height: 100vh;">
+      <b-carousel-slide class="carousel-slide" style="height: 100vh;">
         <template #img>
           <img
             width="100%"
@@ -35,8 +35,8 @@
         </template>
       </b-carousel-slide>
 
-      <!-- Slides with image only -->
-      <b-carousel-slide style="height: 100vh;">
+      <!-- Slides three -->
+      <b-carousel-slide class="carousel-slide" style="height: 100vh;">
         <template #img>
           <img
             width="100%"
@@ -71,6 +71,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+@media (max-width: 992px) {
+  .slider-wrapper {
+    height: 60vh;
+  }
+}
 </style>

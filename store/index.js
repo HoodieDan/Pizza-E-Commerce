@@ -330,7 +330,7 @@ export const getters = {
   drinksItemsLength (state) {
     return state.cartItems.drink.length
   },
-  sidesItemsTotal (state) {
+  sidesItemsLength (state) {
     return state.cartItems.sides.length
   },
   itemTotal (state) {
