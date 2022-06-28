@@ -17,7 +17,7 @@
           <img
             width="100%"
             height="100%"
-            src="../assets/images/pexels-1.jpg"
+            src="../assets/images/pexels-4.jpg"
             alt="image slot"
           >
         </template>

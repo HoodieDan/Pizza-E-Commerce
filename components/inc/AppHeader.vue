@@ -9,29 +9,29 @@
       <div class="mid-nav-links mx-auto">
         <ul class="navbar-navi">
           <li class="navbar-item">
-            <nuxt-link class="navi-link text-white" to="/pizzas">
+            <a class="navi-link text-white" href="#pizzas">
               PIZZAS
-            </nuxt-link>
+            </a>
           </li>
           <li class="navbar-item">
-            <nuxt-link class="navi-link text-white" to="/drinks">
+            <a class="navi-link text-white" href="#drinks">
               DRINKS
-            </nuxt-link>
+            </a>
           </li>
           <li class="navbar-item">
-            <nuxt-link class="navi-link text-white" to="/sides">
+            <a class="navi-link text-white" href="#sides">
               SIDES
-            </nuxt-link>
+            </a>
           </li>
           <li class="navbar-item">
-            <nuxt-link class="navi-link text-white" to="/desserts">
+            <a class="navi-link text-white" to="#desserts">
               DESSERTS
-            </nuxt-link>
+            </a>
           </li>
           <li class="navbar-item">
-            <nuxt-link class="navi-link text-white" to="/pastas">
+            <a class="navi-link text-white" to="#pastas">
               PASTAS
-            </nuxt-link>
+            </a>
           </li>
         </ul>
       </div>
@@ -80,11 +80,16 @@
       @click.self="toggleNav"
     >
       <aside class="mobile-nav" :class="{ 'leave-animation': navIsOpen === false, 'invisible': clicked === 0, }">
-        <a class="navbar-link mono block" href="#">PIZZAS</a>
-        <a class="navbar-link mono block" href="#">DRINKS</a>
-        <a class="navbar-link mono block" href="#">SIDES</a>
-        <a class="navbar-link mono block" href="#">DESSERTS</a>
-        <a class="navbar-link mono block" href="#">PASTAS</a>
+        <h2>{Brand}</h2>
+        <hr>
+        <a class="navbar-link mono block" href="#pizzas">PIZZAS</a>
+        <a class="navbar-link mono block" href="#drinks">DRINKS</a>
+        <a class="navbar-link mono block" href="#sides">SIDES</a>
+        <a class="navbar-link mono block" href="#desserts">DESSERTS</a>
+        <a class="navbar-link mono block" href="#pastas">PASTAS</a>
+        <a class="navbar-link mono block" href="#">ABOUT US</a>
+        <hr>
+        <p>Tel: +234PIZZA-DEN</p>
       </aside>
     </div>
 
@@ -145,6 +150,9 @@ nav {
   position: fixed;
   width: 100%;
   padding: 15px;
+}
+hr {
+  border-top: #FFF solid 1px;
 }
 div.navis {
   width: 100%;

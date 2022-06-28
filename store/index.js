@@ -315,6 +315,72 @@ export const state = () => ({
       image: require('../assets/images/crushed-chilli.png')
     }
   ],
+  desserts: [
+    {
+      category: 'desserts',
+      name: 'FROZEN CHOCOLATE ROLLS',
+      quantity: 1,
+      description: 'Small Rolls of frozen chocolate 8 pieces',
+      price: 1300,
+      image: require('../assets/images/chocolate-rolls.png')
+    },
+    {
+      category: 'desserts',
+      name: 'CINNAMON ROLLS',
+      quantity: 1,
+      description: 'Small Rolls of dough with cinnamon and sugar 8 pieces',
+      price: 1300,
+      image: require('../assets/images/cinnamon-rolls.png')
+    },
+    {
+      category: 'desserts',
+      name: 'DEATH BY CHOCOLATE',
+      quantity: 1,
+      description: 'Warm Chocolate Pudding. Serves 4',
+      price: 1800,
+      image: require('../assets/images/death-by-chocolate.png')
+    },
+    {
+      category: 'desserts',
+      name: 'CHOCOLATE CAKE',
+      quantity: 1,
+      description: 'Slice of cgocolate cake with a cherry topping',
+      price: 1000,
+      image: require('../assets/images/chocolate-cake-slice.png')
+    },
+    {
+      category: 'desserts',
+      name: 'CHOCOLATE ICE CREAM',
+      quantity: 1,
+      description: 'Small cup of chocolate ice-cream',
+      price: 1500,
+      image: require('../assets/images/chocolate-ice-cream.png')
+    },
+    {
+      category: 'desserts',
+      name: 'CHOCOLATE CHIP COOKIES',
+      quantity: 1,
+      description: 'Bite sized chocolate chip cookies 10 pieces',
+      price: 1000,
+      image: require('../assets/images/chocolate-chip-cookies.png')
+    },
+    {
+      category: 'desserts',
+      name: 'STRAWBERRY PIE',
+      quantity: 1,
+      description: 'A slice of our special strawberry pie',
+      price: 1300,
+      image: require('../assets/images/strawberry-pie.png')
+    },
+    {
+      category: 'desserts',
+      name: 'CHOCOLATE CUPCAKE',
+      quantity: 1,
+      description: 'Chocolate flavoured cupcakes 4 pieces',
+      price: 1600,
+      image: require('../assets/images/chocolate-cupcake.png')
+    }
+  ],
   cartItems: {
     pizza: [],
     drink: [],
@@ -333,11 +399,15 @@ export const getters = {
   sidesItemsLength (state) {
     return state.cartItems.sides.length
   },
+  dessertItemsLength (state) {
+    return state.cartItems.desserts.length
+  },
   itemTotal (state) {
     let prices = 0
     let toppingsPrice = 0
     let drinksPrice = 0
     let sidesPrice = 0
+    let dessertsPrice = 0
     state.cartItems.pizza.forEach((item) => {
       prices += (item[item.size].price * item.quantity)
       item.toppings.forEach((topping) => {
@@ -348,9 +418,12 @@ export const getters = {
       drinksPrice += (item.price * item.quantity)
     })
     state.cartItems.sides.forEach((item) => {
-      sidesPrice += item.price
+      sidesPrice += (item.price * item.quantity)
     })
-    const sum = prices + toppingsPrice + drinksPrice + sidesPrice
+    state.cartItems.desserts.forEach((item) => {
+      dessertsPrice += (item.price * item.quantity)
+    })
+    const sum = prices + toppingsPrice + drinksPrice + sidesPrice + dessertsPrice
     return sum
   },
   selectedItemTotal (state) {
@@ -365,10 +438,8 @@ export const getters = {
       })
     }
     const sum = pizzaPrice + toppingTotal
+    state.selectedPizza.total = sum
     return sum
-  },
-  cartItemTotal (getters) {
-    return (getters.selectedItemTotal)
   }
 }
 

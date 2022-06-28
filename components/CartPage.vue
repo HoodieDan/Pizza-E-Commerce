@@ -9,7 +9,13 @@
     @click.self="toggleCart"
   >
     <div class="cart-container">
-      <aside v-show="pizzaItemsLength === 0 && drinksItemsLength === 0 && sidesItemsLength === 0" class="cart empty">
+      <aside
+        v-show="pizzaItemsLength === 0
+          && drinksItemsLength === 0
+          && sidesItemsLength === 0
+          && dessertItemsLength === 0"
+        class="cart empty"
+      >
         <div class="head">
           <button class="close-modal btn" @click="toggleCart">
             <i class="fa-solid fa-xmark" />
@@ -26,7 +32,13 @@
         </div>
       </aside>
 
-      <aside v-show="pizzaItemsLength > 0 || drinksItemsLength > 0 || sidesItemsLength > 0" class="cart">
+      <aside
+        v-show="pizzaItemsLength > 0
+          || drinksItemsLength > 0
+          || sidesItemsLength > 0
+          || dessertItemsLength > 0"
+        class="cart"
+      >
         <div class="head">
           <button class="close-modal btn" @click="toggleCart">
             <i class="fa-solid fa-xmark" />
@@ -61,8 +73,8 @@
                   </button>
                 </div>
                 <div class="price">
-                  <h5 v-if="cartItemTotal" class="semi-bold">
-                    N{{ cartItemTotal }}
+                  <h5 class="semi-bold">
+                    N{{ cartItem.total }}
                   </h5>
                 </div>
               </div>
@@ -130,6 +142,37 @@
                 </div>
               </div>
             </div>
+            <div v-for="(cartItem, index) in cartItems.desserts" :key="index" class="cart-card d-flex">
+              <div class="image">
+                <img :src="cartItem.image" alt="selected dessert" class="cart-pizza-pic">
+              </div>
+              <div class="order">
+                <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
+                  x
+                </button>
+                <h5 class="dessert-name semi-bold">
+                  {{ cartItem.name }}
+                </h5>
+              </div>
+              <div class="quantity-and-price">
+                <div class="quantity d-flex">
+                  <button class="white-btn-outline" @click="reduceQuantity(cartItem)">
+                    -
+                  </button>
+                  <p class="pizza-quantity">
+                    {{ cartItem.quantity }}
+                  </p>
+                  <button class="brown-btn-outline" @click="increaseQuantity(cartItem)">
+                    +
+                  </button>
+                </div>
+                <div class="price">
+                  <h5 class="semi-bold">
+                    N{{ cartItem.price }}
+                  </h5>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="cart-bottom">
@@ -158,7 +201,7 @@ import { mapGetters, mapMutations, mapState } from 'vuex'
 export default {
   name: 'CartPage',
   computed: {
-    ...mapGetters(['pizzaItemsLength', 'drinksItemsLength', 'itemTotal', 'cartItemTotal', 'sidesItemsLength']),
+    ...mapGetters(['pizzaItemsLength', 'drinksItemsLength', 'itemTotal', 'sidesItemsLength', 'dessertItemsLength']),
     ...mapState(['cartItems', 'cartIsOpen'])
   },
   methods: {
@@ -316,6 +359,9 @@ button:hover,
 button.active {
     outline: solid 2px #58EE9E;
 }
+h5.dessert-name {
+  width: 70%;
+}
 div.cart-bottom {
   display: flex;
   justify-content: space-between;
@@ -324,6 +370,16 @@ div.cart-bottom {
 }
 div.checkout {
   margin-left: 20%;
+}
+@media (min-width: 400px) {
+  div.checkout {
+    margin-left: 30%;
+  }
+}
+@media (min-width: 575px) {
+  div.checkout {
+    margin-left: 55%;
+  }
 }
 @media (max-width: 768px) {
   aside.cart {
