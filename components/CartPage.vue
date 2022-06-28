@@ -8,7 +8,7 @@
     @click.self="toggleCart"
   >
     <div class="cart-container">
-      <aside v-show="cartItemsLength === 0" class="cart empty">
+      <aside v-show="pizzaItemsLength === 0 && drinksItemsLength === 0" class="cart empty">
         <div class="head">
           <button class="close-modal btn" @click="toggleCart">
             <i class="fa-solid fa-xmark" />
@@ -25,7 +25,7 @@
         </div>
       </aside>
 
-      <aside v-show="cartItemsLength > 0 || drinksItemsLength > 0" class="cart">
+      <aside v-show="pizzaItemsLength > 0 || drinksItemsLength > 0" class="cart">
         <div class="head">
           <button class="close-modal btn" @click="toggleCart">
             <i class="fa-solid fa-xmark" />
@@ -126,7 +126,7 @@ import { mapGetters, mapMutations, mapState } from 'vuex'
 export default {
   name: 'CartPage',
   computed: {
-    ...mapGetters(['cartItemsLength', 'drinksItemsLength', 'itemTotal', 'cartItemTotal']),
+    ...mapGetters(['pizzaItemsLength', 'drinksItemsLength', 'itemTotal', 'cartItemTotal']),
     ...mapState(['cartItems'])
   },
   methods: {
