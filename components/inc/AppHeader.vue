@@ -1,70 +1,72 @@
 <template>
   <nav>
-    <div class="branding">
-      <nuxt-link class="navbar-brand text-white" to="/">
-        HOME
-      </nuxt-link>
-    </div>
-    <div class="mid-nav-links mx-auto">
-      <ul class="navbar-navi">
-        <li class="navbar-item">
-          <nuxt-link class="navi-link text-white" to="/pizzas">
-            PIZZAS
-          </nuxt-link>
-        </li>
-        <li class="navbar-item">
-          <nuxt-link class="navi-link text-white" to="/drinks">
-            DRINKS
-          </nuxt-link>
-        </li>
-        <li class="navbar-item">
-          <nuxt-link class="navi-link text-white" to="/sides">
-            SIDES
-          </nuxt-link>
-        </li>
-        <li class="navbar-item">
-          <nuxt-link class="navi-link text-white" to="/desserts">
-            DESSERTS
-          </nuxt-link>
-        </li>
-        <li class="navbar-item">
-          <nuxt-link class="navi-link text-white" to="/pastas">
-            PASTAS
-          </nuxt-link>
-        </li>
-      </ul>
-    </div>
-    <div class="right-nav-links ml-auto">
-      <!-- Shopping cart -->
-      <button class="btn" @click="toggleCart">
-        <i class="font-awesome fa-solid fa-cart-shopping" />
-      </button>
-      <!-- sign in -->
-      <button class="btn sign-in" @click.prevent="toggleSignIn">
-        <span class="button-text">Sign In</span>
-        <i class="font-awesome sign-in-icon fa-solid fa-arrow-right-to-bracket" />
-      </button>
-      <!-- nav menu -->
-      <button
-        class="navbar-toggle"
-        :class="{ 'increase-index': navIsOpen }"
-        type="button"
-        aria-label="Toggle navigation"
-        @click="toggleNav"
-      >
-        <span
-          class="toggler-icon top-bar"
-          :class="{ 'top-icon-animate': navIsOpen }"
-        />
-        <span
-          class="toggler-icon middle-bar"
-          :class="{ 'middle-icon-animate': navIsOpen }"
-        />
-        <span
-          class="toggler-icon bottom-bar"
-          :class="{ 'bottom-icon-animate': navIsOpen }"
-        />
-      </button>
+    <div class="navis container">
+      <div class="branding">
+        <nuxt-link class="navbar-brand text-white" to="/">
+          HOME
+        </nuxt-link>
+      </div>
+      <div class="mid-nav-links mx-auto">
+        <ul class="navbar-navi">
+          <li class="navbar-item">
+            <nuxt-link class="navi-link text-white" to="/pizzas">
+              PIZZAS
+            </nuxt-link>
+          </li>
+          <li class="navbar-item">
+            <nuxt-link class="navi-link text-white" to="/drinks">
+              DRINKS
+            </nuxt-link>
+          </li>
+          <li class="navbar-item">
+            <nuxt-link class="navi-link text-white" to="/sides">
+              SIDES
+            </nuxt-link>
+          </li>
+          <li class="navbar-item">
+            <nuxt-link class="navi-link text-white" to="/desserts">
+              DESSERTS
+            </nuxt-link>
+          </li>
+          <li class="navbar-item">
+            <nuxt-link class="navi-link text-white" to="/pastas">
+              PASTAS
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
+      <div class="right-nav-links ml-auto">
+        <!-- Shopping cart -->
+        <button class="btn" @click="toggleCart">
+          <i class="font-awesome fa-solid fa-cart-shopping" />
+        </button>
+        <!-- sign in -->
+        <button class="btn sign-in" @click.prevent="toggleSignIn">
+          <span class="button-text">Sign In</span>
+          <i class="font-awesome sign-in-icon fa-solid fa-arrow-right-to-bracket" />
+        </button>
+        <!-- nav menu -->
+        <button
+          class="navbar-toggle"
+          :class="{ 'increase-index': navIsOpen }"
+          type="button"
+          aria-label="Toggle navigation"
+          @click="toggleNav"
+        >
+          <span
+            class="toggler-icon top-bar"
+            :class="{ 'top-icon-animate': navIsOpen }"
+          />
+          <span
+            class="toggler-icon middle-bar"
+            :class="{ 'middle-icon-animate': navIsOpen }"
+          />
+          <span
+            class="toggler-icon bottom-bar"
+            :class="{ 'bottom-icon-animate': navIsOpen }"
+          />
+        </button>
+      </div>
     </div>
 
     <!-- mobile navigation  -->
@@ -129,10 +131,14 @@ nav {
   background-color: #5D3801;
   color: #FFF !important;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
   width: 100%;
   padding: 2% 4%;
+}
+div.navis {
+  width: 100%;
+  display: flex;
 }
 div.branding {
   margin: auto 0;
@@ -272,6 +278,10 @@ span.bottom-bar {
 }
 .sign-in-icon {
   display: none;
+}
+@media (min-width: 992px) {
+  .navis {
+  }
 }
 @media (max-width: 992px) {
   .right-nav-links {

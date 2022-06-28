@@ -1,79 +1,88 @@
 <template>
-  <div class="cart-container">
-    <aside v-show="cartItemsLength === 0" class="cart empty">
-      <div class="head">
-        <button class="close-modal btn" @click="toggleCart">
-          <i class="fa-solid fa-xmark" />
-        </button>
-        <h2 class="brown semi-bold cart-header">
-          CART
-        </h2>
-        <div class="cart-bg text-center my-auto">
-          <img src="../assets/images/cart-bg.png" alt="empty cart bg">
-          <h2 class="brown semi-bold">
-            Cart is Empty!
+  <div
+    class="backdrop"
+    @wheel.self.prevent
+    @touchmove.self.prevent
+    @scroll.self.prevent
+    @touch.self="toggleCart"
+    @click.self="toggleCart"
+  >
+    <div class="cart-container">
+      <aside v-show="cartItemsLength === 0" class="cart empty">
+        <div class="head">
+          <button class="close-modal btn" @click="toggleCart">
+            <i class="fa-solid fa-xmark" />
+          </button>
+          <h2 class="brown semi-bold cart-header">
+            CART
           </h2>
+          <div class="cart-bg text-center my-auto">
+            <img src="../assets/images/cart-bg.png" alt="empty cart bg">
+            <h2 class="brown semi-bold">
+              Cart is Empty!
+            </h2>
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
 
-    <aside v-show="cartItemsLength > 0" class="cart">
-      <div class="head">
-        <button class="close-modal btn" @click="toggleCart">
-          <i class="fa-solid fa-xmark" />
-        </button>
-        <h2 class="brown semi-bold cart-header">
-          CART
-        </h2>
-        <div class="items">
-          <div v-for="(cartItem, index) in cartItems" :key="index" class="cart-card d-flex">
-            <div class="image">
-              <img :src="cartItem.image" alt="selected pizza" class="cart-pizza-pic">
-            </div>
-            <div class="order">
-              <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
-                x
-              </button>
-              <h5 class="semi-bold">
-                {{ cartItem.name }}
-              </h5>
-              <p>{{ cartItem.size }}, <span v-for="(topping, i) in cartItem.toppings" :key="i"> {{ topping.name }},</span></p>
-            </div>
-            <div class="quantity-and-price">
-              <div class="quantity d-flex">
-                <button class="white-btn-outline" @click="reduceQuantity(cartItem)">
-                  -
-                </button>
-                <p class="pizza-quantity">
-                  {{ cartItem.quantity }}
-                </p>
-                <button class="brown-btn-outline" @click="increaseQuantity(cartItem)">
-                  +
-                </button>
+      <aside v-show="cartItemsLength > 0" class="cart">
+        <div class="head">
+          <button class="close-modal btn" @click="toggleCart">
+            <i class="fa-solid fa-xmark" />
+          </button>
+          <h2 class="brown semi-bold cart-header">
+            CART
+          </h2>
+          <div class="items">
+            <div v-for="(cartItem, index) in cartItems" :key="index" class="cart-card d-flex">
+              <div class="image">
+                <img :src="cartItem.image" alt="selected pizza" class="cart-pizza-pic">
               </div>
-              <div class="price">
-                <h5 v-if="cartItemTotal" class="semi-bold">
-                  N{{ cartItemTotal }}
+              <div class="order">
+                <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
+                  x
+                </button>
+                <h5 class="semi-bold">
+                  {{ cartItem.name }}
                 </h5>
+                <p>{{ cartItem.size }}, <span v-for="(topping, i) in cartItem.toppings" :key="i"> {{ topping.name }},</span></p>
+              </div>
+              <div class="quantity-and-price">
+                <div class="quantity d-flex">
+                  <button class="white-btn-outline" @click="reduceQuantity(cartItem)">
+                    -
+                  </button>
+                  <p class="pizza-quantity">
+                    {{ cartItem.quantity }}
+                  </p>
+                  <button class="brown-btn-outline" @click="increaseQuantity(cartItem)">
+                    +
+                  </button>
+                </div>
+                <div class="price">
+                  <h5 v-if="cartItemTotal" class="semi-bold">
+                    N{{ cartItemTotal }}
+                  </h5>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="cart-bottom">
-            <div class="total">
-              <p>Total:</p>
-              <h2 class="brown semi-bold">
-                N{{ itemTotal }}
-              </h2>
-            </div>
-            <div class="checkout">
-              <button class="btn">
-                CHECKOUT
-              </button>
+            <div class="cart-bottom">
+              <div class="total">
+                <p>Total:</p>
+                <h2 class="brown semi-bold">
+                  N{{ itemTotal }}
+                </h2>
+              </div>
+              <div class="checkout">
+                <button class="btn">
+                  CHECKOUT
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </div>
   </div>
 </template>
 
@@ -93,6 +102,19 @@ export default {
 </script>
 
 <style scoped>
+div.backdrop {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
 aside.cart {
   box-shadow: 0px 1px 6px rgb(0 0 0 / 20%);
   display: flex;

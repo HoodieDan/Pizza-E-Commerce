@@ -12,13 +12,23 @@
       @sliding-end="onSlideEnd"
     >
       <!-- Slide One -->
-      <b-carousel-slide img-src="../assets/images/home-ad.png" />
+      <b-carousel-slide>
+        <template #img>
+          <img
+            width="100%"
+            height="550px"
+            src="../assets/images/home-ad.png"
+            alt="image slot"
+          >
+        </template>
+      </b-carousel-slide>
 
       <!-- Slides two -->
       <b-carousel-slide>
         <template #img>
           <img
             width="100%"
+            height="550px"
             src="../assets/images/home-ad.png"
             alt="image slot"
           >
@@ -26,7 +36,16 @@
       </b-carousel-slide>
 
       <!-- Slides with image only -->
-      <b-carousel-slide img-src="../assets/images/home-ad.png" />
+      <b-carousel-slide>
+        <template #img>
+          <img
+            width="100%"
+            height="550px"
+            src="../assets/images/home-ad.png"
+            alt="image slot"
+          >
+        </template>
+      </b-carousel-slide>
     </b-carousel>
   </div>
 </template>
