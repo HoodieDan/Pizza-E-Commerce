@@ -323,7 +323,7 @@ div.cart-bottom {
   bottom: 20px;
 }
 div.checkout {
-  margin-left: 50%;
+  margin-left: 20%;
 }
 @media (max-width: 768px) {
   aside.cart {
