@@ -338,7 +338,7 @@ export const mutations = {
   addOthersToCart (state, order) {
     if (state.drinks.length !== 0) {
       const inCart = state.cartItems[order.category].find((item) => {
-        return ((item.name) === (state.selectedPizza.name))
+        return ((item.name) === (order.name))
       })
       if (inCart) {
         inCart.quantity++
