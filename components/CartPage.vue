@@ -184,7 +184,7 @@
           </div>
           <div class="checkout">
             <nuxt-link to="/CheckoutPage">
-              <button class="btn">
+              <button class="btn" @click="toggleCart">
                 CHECKOUT
               </button>
             </nuxt-link>
@@ -378,7 +378,7 @@ div.checkout {
 }
 @media (min-width: 575px) {
   div.checkout {
-    margin-left: 55%;
+    margin-left: 60%;
   }
 }
 @media (max-width: 768px) {

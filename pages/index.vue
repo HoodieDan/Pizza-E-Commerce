@@ -32,8 +32,8 @@ export default {
 
 <style>
 section {
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 h5 {
   font-size: 20px;
