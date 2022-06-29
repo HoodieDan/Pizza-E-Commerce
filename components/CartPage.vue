@@ -279,7 +279,7 @@ aside.cart.empty {
   z-index: 20;
 }
 div.cart-bg {
-  vertical-align: middle;
+  margin-top: 25vh !important;
 }
 div.cart-card {
   width: 95%;

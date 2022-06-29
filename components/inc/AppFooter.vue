@@ -3,7 +3,8 @@
     <div class="row">
       <div class="brandy col-lg-4 col-md-4 col-sm-12">
         <div class="brand">
-          <h1>Brand</h1>
+          <img src="../../assets/images/logo-left.png" alt="..">
+          <img src="../../assets/images/logo-right.png" alt="..">
           <h5>{Brand Name}</h5>
           <p class="footer-p">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, aut?
@@ -59,6 +60,10 @@ div.brandy {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.brand img {
+  max-width: 39px;
+  margin-bottom: 10px;
 }
 a.footer-link {
   color: #FFF;

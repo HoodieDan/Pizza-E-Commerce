@@ -3,7 +3,8 @@
     <div class="navis container">
       <div class="branding">
         <nuxt-link class="navbar-brand text-white" to="/">
-          HOME
+          <img src="../../assets/images/logo-left.png" alt="..">
+          <img src="../../assets/images/logo-right.png" alt="..">
         </nuxt-link>
       </div>
       <div class="mid-nav-links mx-auto">
@@ -51,7 +52,7 @@
           :class="{ 'increase-index': navIsOpen }"
           type="button"
           aria-label="Toggle navigation"
-          @click="toggleNav"
+          @click="toggleNav()"
         >
           <span
             class="toggler-icon top-bar"
@@ -79,7 +80,7 @@
       @touch.self="toggleNav"
       @click.self="toggleNav"
     >
-      <aside class="mobile-nav" :class="{ 'leave-animation': navIsOpen === false, 'invisible': clicked === 0, }">
+      <aside class="mobile-nav">
         <h2>{Brand}</h2>
         <hr>
         <a class="navbar-link mono block" href="#pizzas">PIZZAS</a>
@@ -123,7 +124,7 @@ export default {
     ...mapMutations(['toggleCart']),
     toggleNav () {
       this.$emit('toggle-nav')
-      this.clicked = 1
+      this.clicked++
     },
     toggleSignIn () {
       this.$emit('toggle-sign-in')
@@ -168,8 +169,6 @@ div.branding {
 ul.navbar-navi {
   display: flex;
   justify-content: space-between;
-  position: relative;
-  right: 200px;
 }
 li.navbar-item {
   margin-right: 15%;
@@ -189,8 +188,12 @@ div button {
 }
 .navbar-link:hover,
 .navbar-link:focus,
-.navbar-link.active {
+.navbar-link.active,
+.navi-link:hover,
+.navi-link:focus,
+.navi-link.active {
   color: #58EE9E;
+  text-decoration: none;
 }
 div.backdrop {
     display: flex;
@@ -303,8 +306,6 @@ span.bottom-bar {
 }
 @media (min-width: 992px) {
   div.mid-nav-links {
-    position: relative;
-    left: 225px;
     display: flex;
     align-items: center;
   }
@@ -314,7 +315,7 @@ span.bottom-bar {
     display: flex;
     align-items: center;
     position: relative;
-    left: 170px;
+    right: 30px;
   }
 }
 @media (min-width: 769px) {
