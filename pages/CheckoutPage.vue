@@ -74,6 +74,9 @@
         </div>
       </form>
     </div>
+    <button type="submit" class="btn mt-5">
+      Proceed
+    </button>
   </div>
 </template>
 
