@@ -162,6 +162,9 @@ div.navis {
 div.branding {
   margin: auto 0;
 }
+.navbar-brand {
+  z-index: 1000;
+}
 .right-nav-links {
   padding: 7px 0px;
   display: flex;
