@@ -174,7 +174,7 @@ ul.navbar-navi {
   justify-content: space-between;
 }
 li.navbar-item {
-  margin-right: 15%;
+  margin: auto 20px;
   color: #FFF !important;
 }
 .button-text {
@@ -317,8 +317,6 @@ span.bottom-bar {
   div.mid-nav-links {
     display: flex;
     align-items: center;
-    position: relative;
-    right: 30px;
   }
 }
 @media (min-width: 769px) {

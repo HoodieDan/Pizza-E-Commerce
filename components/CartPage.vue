@@ -373,12 +373,12 @@ div.checkout {
 }
 @media (min-width: 400px) {
   div.checkout {
-    margin-left: 30%;
+    margin-left: 38%;
   }
 }
 @media (min-width: 575px) {
   div.checkout {
-    margin-left: 60%;
+    margin-left: 70%;
   }
 }
 @media (max-width: 768px) {
