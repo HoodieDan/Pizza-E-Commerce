@@ -149,38 +149,48 @@ export const state = () => ({
     }
   ],
   selectedTopping: {},
-  toppings: [
-    {
-      name: 'onions',
-      price: 200,
-      image: require('../assets/images/onions.png')
-    },
-    {
-      name: 'chicken',
-      price: 600,
-      image: require('../assets/images/chicken.png')
-    },
-    {
-      name: 'sausage',
-      price: 400,
-      image: require('../assets/images/sausage.png')
-    },
-    {
-      name: 'mozzarella',
-      price: 300,
-      image: require('../assets/images/mozzarella.png')
-    },
-    {
-      name: 'chilli',
-      price: 250,
-      image: require('../assets/images/chilli-peppers.png')
-    },
-    {
-      name: 'mushrooms',
-      price: 200,
-      image: require('../assets/images/mushrooms.png')
-    }
-  ],
+  toppings: {
+    meat: [
+      {
+        name: 'chicken',
+        price: 600,
+        image: require('../assets/images/chicken.png'),
+        position: 'right'
+      },
+      {
+        name: 'sausage',
+        price: 400,
+        image: require('../assets/images/sausage.png'),
+        position: 'right'
+      }
+    ],
+    vegetables: [
+      {
+        name: 'onions',
+        price: 200,
+        image: require('../assets/images/onions.png'),
+        position: 'right'
+      },
+      {
+        name: 'mozzarella',
+        price: 300,
+        image: require('../assets/images/mozzarella.png'),
+        position: 'right'
+      },
+      {
+        name: 'chilli',
+        price: 250,
+        image: require('../assets/images/chilli-peppers.png'),
+        position: 'right'
+      },
+      {
+        name: 'mushrooms',
+        price: 200,
+        image: require('../assets/images/mushrooms.png'),
+        position: 'right'
+      }
+    ]
+  },
   selectedPizza: {},
   drinks: [
     {
@@ -523,8 +533,8 @@ export const mutations = {
   selectSize (state, size) {
     state.selectedPizza.size = size
   },
-  addTopping (state, topping) {
-    const top = state.toppings.find((item) => {
+  addMeatTopping (state, topping) {
+    const top = state.toppings.meat.find((item) => {
       return item.name === topping.name
     })
     if (state.selectedPizza.toppings.includes(top)) {
@@ -533,5 +543,34 @@ export const mutations = {
     } else if (state.selectedPizza.toppings.length < 3) {
       state.selectedPizza.toppings.push(top)
     }
+  },
+  addVegetableTopping (state, topping) {
+    const top = state.toppings.vegetablesg.find((item) => {
+      return item.name === topping.name
+    })
+    if (state.selectedPizza.toppings.includes(top)) {
+      const index = state.selectedPizza.toppings.indexOf(top)
+      state.selectedPizza.toppings.splice(index, 1)
+    } else if (state.selectedPizza.toppings.length < 3) {
+      state.selectedPizza.toppings.push(top)
+    }
+  },
+  leftTopping (state, topping) {
+    const foundItem = state.selectedPizza.toppings.find((item) => {
+      return item.name === topping.name
+    })
+    foundItem.position = 'left'
+  },
+  centerTopping (state, topping) {
+    const foundItem = state.selectedPizza.toppings.find((item) => {
+      return item.name === topping.name
+    })
+    foundItem.position = 'center'
+  },
+  rightTopping (state, topping) {
+    const foundItem = state.selectedPizza.toppings.find((item) => {
+      return item.name === topping.name
+    })
+    foundItem.position = 'right'
   }
 }

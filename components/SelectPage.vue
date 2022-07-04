@@ -40,20 +40,64 @@
               </button>
             </div>
           </div>
+
+          <!-- Meat Toppings  -->
           <div class="select-toppings">
             <h5 class="brown semi-bold">
-              Select Toppings
+              Select Meat Toppings
             </h5>
-            <div class="toppings" role="group">
-              <button v-for="(topping, index) in toppings" :key="index" class="topping" :class="getActiveClass(topping.name)" @click="addTopping(topping), makeActive(topping.name)">
-                <p class="brown topping-price">
-                  N{{ topping.price }}
-                </p>
-                <img class="topping-image" :src="topping.image" :alt="topping.name">
-                <p class="brown">
-                  {{ topping.name }}
-                </p>
-              </button>
+            <div class="toppings row" role="group">
+              <div v-for="(topping, index) in toppings.meat" :key="index" class="col-6">
+                <button class="topping" @click="addMeatTopping(topping)">
+                  <p class="brown topping-price">
+                    N{{ topping.price }}
+                  </p>
+                  <p class="brown topping-name">
+                    {{ topping.name }}
+                  </p>
+                </button>
+                <div class="side">
+                  <button class="topping brown" @click="leftTopping(topping)">
+                    <i class="fa-solid fa-circle-half-stroke" />
+                  </button>
+                  <button class="topping brown" @click="centerTopping(topping, 'center')">
+                    <i class="fa-solid fa-circle" />
+                  </button>
+                  <button class="topping brown" @click="rightTopping(topping, 'right')">
+                    <i class="fa-solid fa-circle-half-stroke left-topping" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vegetable Toppings  -->
+          <div class="select-toppings">
+            <h5 class="brown semi-bold">
+              Select Vegetable Toppings
+            </h5>
+            <div class="toppings row" role="group">
+              <div v-for="(topping, index) in toppings.vegetables" :key="index" class="col-6">
+                <button class="topping" @click="addVegetableTopping(topping)">
+                  <p class="brown topping-price">
+                    N{{ topping.price }}
+                  </p>
+                  <p class="brown topping-name">
+                    {{ topping.name }}
+                  </p>
+                </button>
+                <div class="side">
+                  <button class="topping brown">
+                    <i class="fa-solid fa-circle-half-stroke" />
+                  </button>
+                  <button class="topping brown">
+                    <i class="fa-solid fa-circle" />
+                  </button>
+                  <button class="topping brown">
+                    <i class="fa-solid fa-circle-half-stroke left-topping" />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
           <div class="total">
@@ -94,7 +138,7 @@ export default {
     ...mapGetters(['selectedItemTotal'])
   },
   methods: {
-    ...mapMutations(['toggleSelectFromSelect', 'addToCart', 'selectSize', 'addTopping']),
+    ...mapMutations(['toggleSelectFromSelect', 'addToCart', 'selectSize', 'addMeatTopping', 'addVegetableTopping', 'centerTopping', 'leftTopping', 'rightTopping']),
     getActiveClass (id) {
       const foundItem = this.activeId.find((item) => {
         return item === id
@@ -182,25 +226,24 @@ button.select {
     margin: 10px;
     padding: 10px;
 }
-div.toppings {
-  display: flex;
-  align-items: center;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
 button.topping {
   border: #DED8D8 1px solid;
   border-radius: 5px;
   margin: 5px;
-  height: 115px;
-  width: 115px !important;
+}
+.left-topping {
+  transform: rotateY(180deg);
 }
 img.topping-image {
-  max-height: 51px;
-  max-width: 77px;
+  max-height: 21px;
+  max-width: 37px;
 }
 p.topping-price {
   margin-bottom: 0 !important;
+  font-size: 10px;
+}
+p.topping-name {
+  margin: 0;
 }
 div.total {
   margin-top: 20px;
