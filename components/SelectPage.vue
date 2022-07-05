@@ -24,6 +24,7 @@
               {{ selectedPizza.ingredients }}
             </h6>
           </div>
+          <!-- select size -->
           <div class="size">
             <h5 class="brown semi-bold">
               Select Size
@@ -48,7 +49,7 @@
             </h5>
             <div class="toppings row" role="group">
               <div v-for="(topping, index) in toppings.meat" :key="index" class="col-6">
-                <button class="topping" @click="addMeatTopping(topping)">
+                <button class="topping" :class="{'active': toppingIsSelected(topping)}" @click="addMeatTopping(topping)">
                   <p class="brown topping-price">
                     N{{ topping.price }}
                   </p>
@@ -57,13 +58,16 @@
                   </p>
                 </button>
                 <div class="side">
-                  <button class="topping brown" @click="leftTopping(topping)">
+                  <!-- left side -->
+                  <button class="topping-side brown" @click="leftTopping(topping)">
                     <i class="fa-solid fa-circle-half-stroke" />
                   </button>
-                  <button class="topping brown" @click="centerTopping(topping, 'center')">
+                  <!-- center -->
+                  <button class="topping-side brown" @click="centerTopping(topping, 'center')">
                     <i class="fa-solid fa-circle" />
                   </button>
-                  <button class="topping brown" @click="rightTopping(topping, 'right')">
+                  <!-- right side -->
+                  <button class="topping-side brown" @click="rightTopping(topping, 'right')">
                     <i class="fa-solid fa-circle-half-stroke left-topping" />
                   </button>
                 </div>
@@ -87,19 +91,23 @@
                   </p>
                 </button>
                 <div class="side">
-                  <button class="topping brown">
+                  <!-- left side  -->
+                  <button class="topping-side brown">
                     <i class="fa-solid fa-circle-half-stroke" />
                   </button>
-                  <button class="topping brown">
+                  <!-- center  -->
+                  <button class="topping-side brown">
                     <i class="fa-solid fa-circle" />
                   </button>
-                  <button class="topping brown">
+                  <!-- right side -->
+                  <button class="topping-side brown">
                     <i class="fa-solid fa-circle-half-stroke left-topping" />
                   </button>
                 </div>
               </div>
             </div>
           </div>
+          <!-- complete total  -->
           <div class="total">
             <h6 class="brown">
               Total:
@@ -109,6 +117,7 @@
             </h2>
           </div>
         </div>
+        <!-- cart button -->
         <button class="btn add-to-cart" @click="addToCart(); activeId = []">
           ADD TO CART
         </button>
@@ -138,7 +147,7 @@ export default {
     ...mapGetters(['selectedItemTotal'])
   },
   methods: {
-    ...mapMutations(['toggleSelectFromSelect', 'addToCart', 'selectSize', 'addMeatTopping', 'addVegetableTopping', 'centerTopping', 'leftTopping', 'rightTopping']),
+    ...mapMutations(['toggleSelectFromSelect', 'addToCart', 'selectSize', 'addMeatTopping', 'addVegetableTopping', 'centerTopping', 'leftTopping', 'rightTopping', 'toppingIsSelected']),
     getActiveClass (id) {
       const foundItem = this.activeId.find((item) => {
         return item === id
@@ -166,9 +175,6 @@ export default {
       } else if (this.activeId.length !== 3 && !foundItem) {
         this.activeId.push(id)
       }
-    },
-    clearActive () {
-      this.activeId = []
     }
   }
 }
@@ -227,6 +233,12 @@ button.select {
     padding: 10px;
 }
 button.topping {
+  border: #DED8D8 1px solid;
+  border-radius: 5px;
+  width: 115px;
+  margin: 5px;
+}
+.topping-side {
   border: #DED8D8 1px solid;
   border-radius: 5px;
   margin: 5px;

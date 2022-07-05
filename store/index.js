@@ -545,7 +545,7 @@ export const mutations = {
     }
   },
   addVegetableTopping (state, topping) {
-    const top = state.toppings.vegetablesg.find((item) => {
+    const top = state.toppings.vegetables.find((item) => {
       return item.name === topping.name
     })
     if (state.selectedPizza.toppings.includes(top)) {
@@ -572,5 +572,17 @@ export const mutations = {
       return item.name === topping.name
     })
     foundItem.position = 'right'
+  },
+  toppingIsSelected (state, topping) {
+    if (state.selectedPizza.toppings) {
+      const found = state.selectedPizza.toppings.find((item) => {
+        return item.name === topping.name
+      })
+      if (found) {
+        return true
+      } else {
+        return false
+      }
+    }
   }
 }
