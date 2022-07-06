@@ -591,7 +591,7 @@ export const mutations = {
     const foundItem = state.selectedPizza.toppings.find((item) => {
       return item.name === topping.name
     })
-    foundItem.position = 'center'
+    foundItem.position = 'full'
   },
   rightTopping (state, topping) {
     const foundItem = state.selectedPizza.toppings.find((item) => {
