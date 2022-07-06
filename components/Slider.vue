@@ -8,7 +8,6 @@
         controls
         indicators
         background="#FFF"
-        style="text-shadow: 1px 1px 2px #333;"
         @sliding-start="onSlideStart"
         @sliding-end="onSlideEnd"
       >
@@ -59,9 +58,9 @@
       <img class="square-pic box" src="../assets/images/pizza-banner-2.png" alt="banner">
       <img class="square-pic square mt-2" src="../assets/images/pizza-banner-3.png" alt="banner">
     </aside>
-    <div class="foot">
+    <!-- <div class="foot">
       <img src="../assets/images/home-ad.png" alt="banner">
-    </div>
+    </div> -->
     <div class="mobile">
       <img src="../assets/images/food-banner-1.jpg" alt="banner" class="banner">
       <img src="../assets/images/home-ad.png" alt="banner" class="banner">
@@ -98,18 +97,15 @@ div.home-grid {
   height: auto;
   display: grid;
   grid-template-areas: 'main main box'
-  'main main square'
-  'footer footer footer';
+  'main main square';
   gap: 10px;
   margin-top: 100px;
 }
 div.slider-wrapper {
-  height: 500px !important;
   grid-area: main;
 }
 .image-slot {
   height: 500px;
-  width: 66vw;
 }
 /* div.banner img {
   height: 500px;
@@ -117,10 +113,10 @@ div.slider-wrapper {
   grid-area: main;
   display: none;
 } */
-/* aside {
-  position: relative;
-  bottom: 25px;
-} */
+aside {
+  display: flex;
+  flex-direction: column;
+}
 .foot {
   grid-area: footer;
   max-width: 100%;

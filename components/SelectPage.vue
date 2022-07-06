@@ -302,4 +302,10 @@ button:visited {
     display: none;
   }
 }
+@media (max-width: 400px) {
+  button.select {
+    padding: 0px;
+    margin-right: 0;
+  }
+}
 </style>
