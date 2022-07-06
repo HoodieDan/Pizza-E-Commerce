@@ -134,7 +134,7 @@ aside {
 .square-pic {
   width: 250px;
 }
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   div.home-grid {
     display: flex;
     height: auto !important;
@@ -158,5 +158,7 @@ aside {
     margin-bottom: 20px;
     border-radius: 5px;
   }
+}
+@media (max-width: 768px) {
 }
 </style>
