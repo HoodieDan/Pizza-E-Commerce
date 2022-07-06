@@ -5,7 +5,7 @@
     </h3>
     <div class="row">
       <div v-for="(dessert, index) in desserts" :key="index" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-        <button class="desserts-button" @click="addOthersToCart(dessert)">
+        <button class="desserts-button" @click="toggleSelectOthers(dessert)">
           <div class="card desserts brown">
             <div class="dessert-image">
               <img class="dessert" :class="dessert.name" :src="dessert.image" :alt="'dessert img'">
@@ -25,6 +25,7 @@
         </button>
       </div>
     </div>
+    <SelectOthers v-show="selectOthersIsOpen" />
     <div class="button">
       <button class="btn">
         <span class="button-text">View More</span>
@@ -35,15 +36,17 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex'
+import SelectOthers from './SelectOthers.vue'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Sides',
+  components: { SelectOthers },
   computed: {
-    ...mapState(['desserts'])
+    ...mapState(['desserts', 'selectOthersIsOpen'])
   },
   methods: {
-    ...mapMutations(['selectDrink', 'addOthersToCart'])
+    ...mapMutations(['selectDrink', 'addOthersToCart', 'toggleSelectOthers'])
   }
 }
 </script>

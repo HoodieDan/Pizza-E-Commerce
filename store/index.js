@@ -1,7 +1,12 @@
+function updateLocalStorage (cartItems) {
+  localStorage.setItem('cartItems', JSON.stringify(cartItems))
+}
+
 export const state = () => ({
   signInOpen: false,
   selectPageIsOpen: false,
   cartIsOpen: false,
+  selectOthersisOpen: false,
   pizzas: [
     {
       category: 'pizza',
@@ -391,6 +396,7 @@ export const state = () => ({
       image: require('../assets/images/chocolate-cupcake.png')
     }
   ],
+  selectedItem: {},
   cartItems: {
     pizza: [],
     drink: [],
@@ -473,6 +479,14 @@ export const mutations = {
     state.selectPageIsOpen = !state.selectPageIsOpen
     state.selectedPizza = {}
   },
+  toggleSelectOthers (state, item) {
+    state.selectOthersisOpen = !state.selectOthersisOpen
+    state.selectedItem = { ...item }
+  },
+  toggleSelectOthersFromSelect (state) {
+    state.selectOthersisOpen = !state.selectOthersisOpen
+    state.selectedItem = {}
+  },
   addToCart (state) {
     let cartItem = { ...state.selectedPizza }
     if (state.drinks.length !== 0) {
@@ -487,6 +501,8 @@ export const mutations = {
         state.cartItems[state.selectedPizza.category].push(cartItem)
         cartItem = {}
       }
+
+      updateLocalStorage(state.cartItems)
     }
     state.selectedPizza.toppings = []
     state.cartIsOpen = true
@@ -512,6 +528,14 @@ export const mutations = {
     foundItem.toppings = []
     const index = state.cartItems[order.category].indexOf(foundItem)
     state.cartItems[order.category].splice(index, 1)
+
+    updateLocalStorage(state.cartItems)
+  },
+  updateCartFromLocalStorage (state) {
+    const cartItems = localStorage.getItem('cart')
+    if (cartItems) {
+      state.cartItems = JSON.parse(cartItems)
+    }
   },
   increaseQuantity (state, order) {
     const foundItem = state.cartItems[order.category].find((item) => {

@@ -49,7 +49,7 @@
           <div class="items">
             <div v-for="(cartItem, index) in cartItems.pizza" :key="index" class="cart-card d-flex">
               <div class="image">
-                <img :src="cartItem.image" alt="selected pizza" class="cart-pizza-pic">
+                <img :src="cartItem.image" alt="selected pizza" class="cart-pic img-fluid">
               </div>
               <div class="order">
                 <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
@@ -58,7 +58,7 @@
                 <h5 class="semi-bold">
                   {{ cartItem.name }}
                 </h5>
-                <p class="topping-info">
+                <p class="topping-info ml-1">
                   {{ cartItem.size }}, <span v-for="(topping, i) in cartItem.toppings" :key="i"> {{ topping.name }}({{ topping.position }}),</span>
                 </p>
               </div>
@@ -83,7 +83,7 @@
             </div>
             <div v-for="(cartItem, index) in cartItems.drink" :key="index" class="cart-card d-flex">
               <div class="image">
-                <img :src="cartItem.image" alt="selected drink" class="cart-pizza-pic">
+                <img :src="cartItem.image" alt="selected drink" class="cart-pic img-fluid">
               </div>
               <div class="order">
                 <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
@@ -115,7 +115,7 @@
             </div>
             <div v-for="(cartItem, index) in cartItems.sides" :key="index" class="cart-card d-flex">
               <div class="image">
-                <img :src="cartItem.image" alt="selected side" class="cart-pizza-pic">
+                <img :src="cartItem.image" alt="selected side" class="cart-pic img-fluid">
               </div>
               <div class="order">
                 <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
@@ -146,7 +146,7 @@
             </div>
             <div v-for="(cartItem, index) in cartItems.desserts" :key="index" class="cart-card d-flex">
               <div class="image">
-                <img :src="cartItem.image" alt="selected dessert" class="cart-pizza-pic">
+                <img :src="cartItem.image" alt="selected dessert" class="cart-pic img-fluid">
               </div>
               <div class="order">
                 <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
@@ -298,10 +298,16 @@ div.cart-card:nth-of-type(1) {
 p.topping-info {
   width: 70%;
 }
-img.cart-pizza-pic {
+div.image {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+img.cart-pic {
   max-height: 80px;
   max-width: 80px;
-  margin-right: 10px;
 }
 div.quantity-and-price {
   display: flex;
@@ -394,7 +400,7 @@ div.checkout {
     height: 100%;
   }
   div.cart-card {
-    height: 150px;
+    min-height: 150px !important;
   }
   div.quantity {
     align-items: flex-end;

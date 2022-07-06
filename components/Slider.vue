@@ -2,10 +2,10 @@
   <div class="home-grid container">
     <div class="slider-wrapper">
       <b-carousel
-        id="carousel-1"
+        id="carousel-fade"
         v-model="slide"
         :interval="4000"
-        controls
+        fade
         indicators
         background="#FFF"
         @sliding-start="onSlideStart"
@@ -103,6 +103,7 @@ div.home-grid {
 }
 div.slider-wrapper {
   grid-area: main;
+  width: auto;
 }
 .image-slot {
   height: 509px;

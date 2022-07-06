@@ -5,7 +5,7 @@
     </h3>
     <div class="row">
       <div v-for="(pizza, index) in pizzas" :key="index" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-        <button class="pizza-button" @click.prevent="toggleSelect(pizza)">
+        <button class="pizza-button" @click="toggleSelect(pizza)">
           <div class="card pizzas brown">
             <div class="pizza-image">
               <img :src="pizza.image" alt="pizza img">
