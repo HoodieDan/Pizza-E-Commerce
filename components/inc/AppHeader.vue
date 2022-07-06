@@ -38,7 +38,12 @@
       </div>
       <div class="right-nav-links ml-auto">
         <!-- Shopping cart -->
-        <button class="btn" @click="toggleCart">
+        <button class="btn cart" @click="toggleCart">
+          <div v-show="cartItemsNumber" class="cart-amount">
+            <p class="cart-amount semi-bold">
+              {{ cartItemsNumber }}
+            </p>
+          </div>
           <i class="font-awesome fa-solid fa-cart-shopping" />
         </button>
         <!-- sign in -->
@@ -100,7 +105,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapMutations, mapState, mapGetters } from 'vuex'
 import SignInVue from '../SignIn.vue'
 import CartPage from '../CartPage.vue'
 
@@ -118,7 +123,11 @@ export default {
     }
   },
   computed: {
-    ...mapState(['cartIsOpen'])
+    ...mapState(['cartIsOpen']),
+    ...mapGetters(['pizzaItemsLength', 'drinksItemsLength', 'sidesItemsLength', 'dessertItemsLength']),
+    cartItemsNumber () {
+      return this.pizzaItemsLength + this.drinksItemsLength + this.sidesItemsLength + this.dessertItemsLength
+    }
   },
   methods: {
     ...mapMutations(['toggleCart']),
@@ -151,6 +160,24 @@ nav {
   position: fixed;
   width: 100%;
   padding: 15px;
+}
+button.cart {
+  position: relative;
+}
+div.cart-amount {
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  border-radius: 32px;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+}
+p.cart-amount {
+  font-size: 15px;
 }
 hr {
   border-top: #FFF solid 1px;
