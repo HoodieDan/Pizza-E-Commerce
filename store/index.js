@@ -519,6 +519,8 @@ export const mutations = {
       }
     }
     state.cartIsOpen = true
+
+    updateLocalStorage(state.cartItems)
   },
   removeFromCart (state, order) {
     const foundItem = state.cartItems[order.category].find((item) => {

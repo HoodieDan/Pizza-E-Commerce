@@ -47,6 +47,7 @@
             CART
           </h2>
           <div class="items">
+            <!-- Pizzas  -->
             <div v-for="(cartItem, index) in cartItems.pizza" :key="index" class="cart-card d-flex">
               <div class="image">
                 <img :src="cartItem.image" alt="selected pizza" class="cart-pic img-fluid">
@@ -81,6 +82,8 @@
                 </div>
               </div>
             </div>
+
+            <!-- Drinks -->
             <div v-for="(cartItem, index) in cartItems.drink" :key="index" class="cart-card d-flex">
               <div class="image">
                 <img :src="cartItem.image" alt="selected drink" class="cart-pic img-fluid">
@@ -89,7 +92,7 @@
                 <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
                   x
                 </button>
-                <h5 class="semi-bold">
+                <h5 class="semi-bold item-name">
                   {{ cartItem.name }}
                 </h5>
                 <p>{{ cartItem.description }}</p>
@@ -113,6 +116,8 @@
                 </div>
               </div>
             </div>
+
+            <!-- sides  -->
             <div v-for="(cartItem, index) in cartItems.sides" :key="index" class="cart-card d-flex">
               <div class="image">
                 <img :src="cartItem.image" alt="selected side" class="cart-pic img-fluid">
@@ -121,7 +126,7 @@
                 <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
                   x
                 </button>
-                <h5 class="semi-bold">
+                <h5 class="semi-bold item-name">
                   {{ cartItem.name }}
                 </h5>
               </div>
@@ -144,6 +149,8 @@
                 </div>
               </div>
             </div>
+
+            <!-- desserts  -->
             <div v-for="(cartItem, index) in cartItems.desserts" :key="index" class="cart-card d-flex">
               <div class="image">
                 <img :src="cartItem.image" alt="selected dessert" class="cart-pic img-fluid">
@@ -152,7 +159,7 @@
                 <button class="btn remove-pizza" @click="removeFromCart(cartItem)">
                   x
                 </button>
-                <h5 class="dessert-name semi-bold">
+                <h5 class="semi-bold item-name">
                   {{ cartItem.name }}
                 </h5>
               </div>
@@ -373,7 +380,7 @@ button:hover,
 button.active {
     outline: solid 2px #58EE9E;
 }
-h5.dessert-name {
+h5.item-name {
   width: 70%;
 }
 div.cart-bottom {
