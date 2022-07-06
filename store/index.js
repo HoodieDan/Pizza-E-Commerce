@@ -532,7 +532,7 @@ export const mutations = {
     updateLocalStorage(state.cartItems)
   },
   updateCartFromLocalStorage (state) {
-    const cartItems = localStorage.getItem('cart')
+    const cartItems = localStorage.getItem('cartItems')
     if (cartItems) {
       state.cartItems = JSON.parse(cartItems)
     }
