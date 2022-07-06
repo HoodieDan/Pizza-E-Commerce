@@ -292,16 +292,16 @@ div.cart-bg {
 }
 div.cart-card {
   width: 95%;
-  height: 100px;
+  height: auto;
   border: #DED8D8 1px solid;
   border-radius: 5px;
   position: relative;
   padding: 10px;
   margin: 20px 0;
 }
-div.cart-card:nth-of-type(1) {
+/* div.cart-card:nth-of-type(1) {
   height: auto !important;
-}
+} */
 p.topping-info {
   width: 70%;
 }
@@ -413,6 +413,9 @@ div.checkout {
     align-items: flex-end;
     bottom: 10px;
     left: 10px;
+  }
+  p.topping-info {
+    width: 100%;
   }
 }
 </style>
