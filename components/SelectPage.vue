@@ -59,15 +59,15 @@
                 </button>
                 <div v-show="toppingSelected(topping)" class="side">
                   <!-- left side -->
-                  <button class="topping-side brown" @click="leftTopping(topping)">
+                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'left')}" @click="leftTopping(topping)">
                     <i class="fa-solid fa-circle-half-stroke" />
                   </button>
                   <!-- center -->
-                  <button class="topping-side brown" @click="centerTopping(topping, 'center')">
+                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'center')}" @click="centerTopping(topping)">
                     <i class="fa-solid fa-circle" />
                   </button>
                   <!-- right side -->
-                  <button class="topping-side brown" @click="rightTopping(topping, 'right')">
+                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'right')}" @click="rightTopping(topping)">
                     <i class="fa-solid fa-circle-half-stroke left-topping" />
                   </button>
                 </div>
@@ -92,15 +92,15 @@
                 </button>
                 <div v-show="toppingSelected(topping)" class="side">
                   <!-- left side  -->
-                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'left')}">
+                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'left')}" @click="leftTopping(topping)">
                     <i class="fa-solid fa-circle-half-stroke" />
                   </button>
                   <!-- center  -->
-                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'center')}">
+                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'center')}" @click="centerTopping(topping)">
                     <i class="fa-solid fa-circle" />
                   </button>
                   <!-- right side -->
-                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'right')}">
+                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'right')}" @click="rightTopping(topping)">
                     <i class="fa-solid fa-circle-half-stroke left-topping" />
                   </button>
                 </div>

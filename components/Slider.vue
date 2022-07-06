@@ -53,21 +53,21 @@
       </b-carousel>
     </div>
     <!-- <div class="banner">
-      <img src="../assets/images/banner-1.jpg" alt="">
+      <img src="../assets/images/banner-1.jpg" alt="banner">
     </div> -->
     <aside>
-      <img class="square-pic box" src="../assets/images/pizza-banner-2.png" alt="">
-      <img class="square-pic square" src="../assets/images/pizza-banner-3.png" alt="">
+      <img class="square-pic box" src="../assets/images/pizza-banner-2.png" alt="banner">
+      <img class="square-pic square mt-2" src="../assets/images/pizza-banner-3.png" alt="banner">
     </aside>
     <div class="foot">
-      <img src="../assets/images/home-ad.png" alt="">
+      <img src="../assets/images/home-ad.png" alt="banner">
     </div>
     <div class="mobile">
-      <img src="../assets/images/food-banner-1.jpg" alt="" class="banner">
-      <img src="../assets/images/home-ad.png" alt="" class="banner">
-      <img src="../assets/images/banner-3.jpg" alt="" class="banner">
-      <!-- <img src="../assets/images/banner-1.jpg" alt="" class="banner"> -->
-      <!-- <img src="../assets/images/banner-2.jpg" alt="" class="banner"> -->
+      <img src="../assets/images/food-banner-1.jpg" alt="banner" class="banner">
+      <img src="../assets/images/home-ad.png" alt="banner" class="banner">
+      <img src="../assets/images/banner-3.jpg" alt="banner" class="banner">
+      <!-- <img src="../assets/images/banner-1.jpg" alt="banner" class="banner"> -->
+      <!-- <img src="../assets/images/banner-2.jpg" alt="banner" class="banner"> -->
     </div>
   </div>
 </template>
@@ -111,12 +111,12 @@ div.slider-wrapper {
   height: 500px;
   width: 66vw;
 }
-div.banner img {
+/* div.banner img {
   height: 500px;
   width: 66vw;
   grid-area: main;
   display: none;
-}
+} */
 /* aside {
   position: relative;
   bottom: 25px;
