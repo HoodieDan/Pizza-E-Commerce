@@ -58,7 +58,9 @@
                 <h5 class="semi-bold">
                   {{ cartItem.name }}
                 </h5>
-                <p>{{ cartItem.size }}, <span v-for="(topping, i) in cartItem.toppings" :key="i"> {{ topping.name }},</span></p>
+                <p class="topping-info">
+                  {{ cartItem.size }}, <span v-for="(topping, i) in cartItem.toppings" :key="i"> {{ topping.name }}({{ topping.position }}),</span>
+                </p>
               </div>
               <div class="quantity-and-price">
                 <div class="quantity d-flex">
@@ -289,6 +291,12 @@ div.cart-card {
   position: relative;
   padding: 10px;
   margin: 20px 0;
+}
+div.cart-card:nth-of-type(1) {
+  height: auto !important;
+}
+p.topping-info {
+  width: 70%;
 }
 img.cart-pizza-pic {
   max-height: 80px;

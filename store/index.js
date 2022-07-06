@@ -172,7 +172,7 @@ export const state = () => ({
         position: 'right'
       },
       {
-        name: 'mozzarella',
+        name: 'mozarella',
         price: 300,
         image: require('../assets/images/mozzarella.png'),
         position: 'right'

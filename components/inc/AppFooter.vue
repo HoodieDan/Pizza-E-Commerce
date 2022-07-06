@@ -1,44 +1,46 @@
 <template>
   <div class="footer container-fluid">
-    <div class="row">
-      <div class="brandy col-lg-4 col-md-4 col-sm-12">
-        <div class="brand">
-          <img src="../../assets/images/logo-left.png" alt="..">
-          <img src="../../assets/images/logo-right.png" alt="..">
-          <h5>{Brand Name}</h5>
-          <p class="footer-p">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, aut?
-          </p>
+    <div class="container">
+      <div class="row">
+        <div class="brandy col-lg-5 col-md-5 col-sm-12">
+          <div class="brand">
+            <img src="../../assets/images/logo-left.png" alt="..">
+            <img src="../../assets/images/logo-right.png" alt="..">
+            <h5>{Brand Name}</h5>
+            <p class="footer-p">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, aut?
+            </p>
+          </div>
+          <div class="copyright">
+            <p class="footer-foot">
+              ©2022 {Brand Name}.
+            </p>
+            <p class="footer-foot">
+              All Rights Reserved
+            </p>
+          </div>
         </div>
-        <div class="copyright">
-          <p class="footer-foot">
-            ©2022 {Brand Name}.
-          </p>
-          <p class="footer-foot">
-            All Rights Reserved
-          </p>
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+          <h5>Quick Links</h5>
+          <a class="footer-link" href="">Home</a>
+          <a class="footer-link" href="">About Us</a>
+          <a class="footer-link" href="">Contact Us</a>
+          <a class="footer-link" href="">FAQs</a>
+          <a class="footer-link" href="">Privacy Policy</a>
+          <a class="footer-link" href="">Terms of Service</a>
         </div>
-      </div>
-      <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
-        <h5>Quick Links</h5>
-        <a class="footer-link" href="">Home</a>
-        <a class="footer-link" href="">About Us</a>
-        <a class="footer-link" href="">Contact Us</a>
-        <a class="footer-link" href="">FAQs</a>
-        <a class="footer-link" href="">Privacy Policy</a>
-        <a class="footer-link" href="">Terms of Service</a>
-      </div>
-      <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
-        <h5>Connect With Us</h5>
-        <a class="footer-link" href=""><img src="../../assets/images/facebook.svg" alt="facebook svg"> Facebook</a>
-        <a class="footer-link" href=""><img src="../../assets/images/twitter.png" alt="twitter png"> Twitter</a>
-        <a class="footer-link" href=""><img src="../../assets/images/instagram.png" alt="instagram png"> Instagram</a>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-        <h5>We Accept</h5>
-        <a href="#" class="payment"><img src="../../assets/images/mastercard.png" alt="mastercard"></a>
-        <a href="#" class="payment"><img src="../../assets/images/visa.png" alt="visa"></a>
-        <a href="" class="payment"><img class="verve" src="../../assets/images/verve.svg" alt="verve"></a>
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+          <h5>Connect With Us</h5>
+          <a class="footer-link" href=""><img src="../../assets/images/facebook.svg" alt="facebook svg"> Facebook</a>
+          <a class="footer-link" href=""><img src="../../assets/images/twitter.png" alt="twitter png"> Twitter</a>
+          <a class="footer-link" href=""><img src="../../assets/images/instagram.png" alt="instagram png"> Instagram</a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+          <h5>We Accept</h5>
+          <a href="#" class="payment"><img src="../../assets/images/mastercard.png" alt="mastercard"></a>
+          <a href="#" class="payment"><img src="../../assets/images/visa.png" alt="visa"></a>
+          <a href="" class="payment"><img class="verve" src="../../assets/images/verve.svg" alt="verve"></a>
+        </div>
       </div>
     </div>
   </div>

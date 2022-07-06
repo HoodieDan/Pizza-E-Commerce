@@ -1,52 +1,74 @@
 <template>
-  <div class="slider-wrapper" style="height: 100vh;">
-    <b-carousel
-      id="carousel-1"
-      v-model="slide"
-      :interval="4000"
-      controls
-      indicators
-      background="#FFF"
-      style="text-shadow: 1px 1px 2px #333;"
-      @sliding-start="onSlideStart"
-      @sliding-end="onSlideEnd"
-    >
-      <!-- Slide One -->
-      <b-carousel-slide class="carousel-slide" style="height: 100vh;">
-        <template #img>
-          <img
-            width="100%"
-            height="100%"
-            src="../assets/images/pexels-4.jpg"
-            alt="image slot"
-          >
-        </template>
-      </b-carousel-slide>
+  <div class="home-grid container">
+    <div class="slider-wrapper">
+      <b-carousel
+        id="carousel-1"
+        v-model="slide"
+        :interval="4000"
+        controls
+        indicators
+        background="#FFF"
+        style="text-shadow: 1px 1px 2px #333;"
+        @sliding-start="onSlideStart"
+        @sliding-end="onSlideEnd"
+      >
+        <!-- Slide One -->
+        <b-carousel-slide class="carousel-slide">
+          <template #img>
+            <img
+              class="image-slot"
+              width="100%"
+              height="100%"
+              src="../assets/images/pexels-4.jpg"
+              alt="image slot"
+            >
+          </template>
+        </b-carousel-slide>
 
-      <!-- Slides two -->
-      <b-carousel-slide class="carousel-slide" style="height: 100vh;">
-        <template #img>
-          <img
-            width="100%"
-            height="100%"
-            src="../assets/images/pexels-2.jpg"
-            alt="image slot"
-          >
-        </template>
-      </b-carousel-slide>
+        <!-- Slides two -->
+        <b-carousel-slide class="carousel-slide">
+          <template #img>
+            <img
+              class="image-slot"
+              width="100%"
+              height="100%"
+              src="../assets/images/pexels-2.jpg"
+              alt="image slot"
+            >
+          </template>
+        </b-carousel-slide>
 
-      <!-- Slides three -->
-      <b-carousel-slide class="carousel-slide" style="height: 100vh;">
-        <template #img>
-          <img
-            width="100%"
-            height="100%"
-            src="../assets/images/pexels-3.jpg"
-            alt="image slot"
-          >
-        </template>
-      </b-carousel-slide>
-    </b-carousel>
+        <!-- Slides three -->
+        <b-carousel-slide class="carousel-slide">
+          <template #img>
+            <img
+              class="image-slot"
+              width="100%"
+              height="100%"
+              src="../assets/images/pexels-3.jpg"
+              alt="image slot"
+            >
+          </template>
+        </b-carousel-slide>
+      </b-carousel>
+    </div>
+    <!-- <div class="banner">
+      <img src="../assets/images/banner-1.jpg" alt="">
+    </div> -->
+    <aside>
+      <img class="square-pic box" src="../assets/images/pizza-banner-2.png" alt="">
+      <img class="square-pic square" src="../assets/images/pizza-banner-3.png" alt="">
+    </aside>
+    <div class="foot">
+      <img src="../assets/images/home-ad.png" alt="">
+    </div>
+    <div class="mobile">
+      <img src="../assets/images/food-banner-1.jpg" alt="" class="banner">
+      <img src="../assets/images/home-ad.png" alt="" class="banner">
+      <img src="../assets/images/banner-3.jpg" alt="" class="banner">
+      <!-- <img src="../assets/images/banner-1.jpg" alt="" class="banner"> -->
+      <!-- <img src="../assets/images/banner-2.jpg" alt="" class="banner"> -->
+    </div>
   </div>
 </template>
 
@@ -72,12 +94,72 @@ export default {
 </script>
 
 <style scoped>
+div.home-grid {
+  height: auto;
+  display: grid;
+  grid-template-areas: 'main main box'
+  'main main square'
+  'footer footer footer';
+  gap: 10px;
+  margin-top: 100px;
+}
+div.slider-wrapper {
+  height: 500px !important;
+  grid-area: main;
+}
+.image-slot {
+  height: 500px;
+  width: 66vw;
+}
+div.banner img {
+  height: 500px;
+  width: 66vw;
+  grid-area: main;
+  display: none;
+}
+/* aside {
+  position: relative;
+  bottom: 25px;
+} */
+.foot {
+  grid-area: footer;
+  max-width: 100%;
+}
+.foot img {
+  height: 200px;
+  width: 100%;
+}
+.banner {
+  display: none;
+}
+/* .box {
+} */
+.square-pic {
+  width: 250px;
+}
 @media (max-width: 992px) {
-  .slider-wrapper {
-    height: 60vh !important;
+  div.home-grid {
+    display: flex;
+    height: auto !important;
   }
   .carousel-slide {
     height: 60vh !important;
+  }
+  .slider-wrapper {
+    display: none !important;
+    width: auto;
+  }
+  .image-slot {
+    width: auto;
+  }
+  div.banner, .foot, aside {
+    display: none;
+  }
+  .banner {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
   }
 }
 </style>

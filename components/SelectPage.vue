@@ -12,7 +12,7 @@
         <img src="../assets/images/select-page-pizza.png" alt="selected pizza">
       </div>
       <div class="pizza-info">
-        <button class="close-modal btn" @click="toggleSelectFromSelect">
+        <button class="close-modal btn" @click="toggleSelectFromSelect(); activeId = []">
           <i class="fa-solid fa-xmark" />
         </button>
         <div class="cont">
@@ -43,21 +43,21 @@
           </div>
 
           <!-- Meat Toppings  -->
-          <div class="select-toppings">
+          <div class="select-toppings mt-4">
             <h5 class="brown semi-bold">
               Select Meat Toppings
             </h5>
             <div class="toppings row" role="group">
               <div v-for="(topping, index) in toppings.meat" :key="index" class="col-6">
-                <button class="topping" :class="{'active': toppingIsSelected(topping)}" @click="addMeatTopping(topping)">
-                  <p class="brown topping-price">
-                    N{{ topping.price }}
-                  </p>
+                <button class="topping" :class="getActiveClass(topping)" @click="addMeatTopping(topping), makeActive(topping)">
                   <p class="brown topping-name">
                     {{ topping.name }}
                   </p>
+                  <p class="brown topping-price">
+                    N{{ topping.price }}
+                  </p>
                 </button>
-                <div class="side">
+                <div v-show="toppingSelected(topping)" class="side">
                   <!-- left side -->
                   <button class="topping-side brown" @click="leftTopping(topping)">
                     <i class="fa-solid fa-circle-half-stroke" />
@@ -76,31 +76,31 @@
           </div>
 
           <!-- Vegetable Toppings  -->
-          <div class="select-toppings">
+          <div class="select-toppings mt-4">
             <h5 class="brown semi-bold">
               Select Vegetable Toppings
             </h5>
             <div class="toppings row" role="group">
               <div v-for="(topping, index) in toppings.vegetables" :key="index" class="col-6">
-                <button class="topping" @click="addVegetableTopping(topping)">
-                  <p class="brown topping-price">
-                    N{{ topping.price }}
-                  </p>
+                <button class="topping" :class="getActiveClass(topping)" @click="addVegetableTopping(topping), makeActive(topping)">
                   <p class="brown topping-name">
                     {{ topping.name }}
                   </p>
+                  <p class="brown topping-price">
+                    N{{ topping.price }}
+                  </p>
                 </button>
-                <div class="side">
+                <div v-show="toppingSelected(topping)" class="side">
                   <!-- left side  -->
-                  <button class="topping-side brown">
+                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'left')}">
                     <i class="fa-solid fa-circle-half-stroke" />
                   </button>
                   <!-- center  -->
-                  <button class="topping-side brown">
+                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'center')}">
                     <i class="fa-solid fa-circle" />
                   </button>
                   <!-- right side -->
-                  <button class="topping-side brown">
+                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'right')}">
                     <i class="fa-solid fa-circle-half-stroke left-topping" />
                   </button>
                 </div>
@@ -155,11 +155,18 @@ export default {
       if (foundItem) {
         return 'active'
       } else {
-        return ''
+        return 'not-active'
       }
     },
     getActiveSize (id) {
       if (id === this.sizeId) {
+        return 'active'
+      } else {
+        return ''
+      }
+    },
+    getActiveSide (id, side) {
+      if (id.position === side) {
         return 'active'
       } else {
         return ''
@@ -174,6 +181,13 @@ export default {
         this.activeId.splice(index, 1)
       } else if (this.activeId.length !== 3 && !foundItem) {
         this.activeId.push(id)
+      }
+    },
+    toppingSelected (topping) {
+      if (this.activeId.includes(topping)) {
+        return true
+      } else {
+        return false
       }
     }
   }
@@ -272,6 +286,9 @@ button:visited {
 }
 .active {
   outline: #58EE9E solid 1px;
+}
+.not-active {
+  outline: none;
 }
 @media (max-width: 768px) {
   button.close-modal {
