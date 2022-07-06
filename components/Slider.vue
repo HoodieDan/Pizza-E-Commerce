@@ -105,7 +105,7 @@ div.slider-wrapper {
   grid-area: main;
 }
 .image-slot {
-  height: 500px;
+  height: 509px;
 }
 /* div.banner img {
   height: 500px;
