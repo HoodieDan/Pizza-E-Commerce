@@ -360,6 +360,7 @@ div.head {
 }
 div.items {
   overflow-y: auto;
+  overflow-x: hidden;
   height: 65% !important;
 }
 .btn.remove-pizza {

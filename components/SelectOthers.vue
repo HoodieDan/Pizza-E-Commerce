@@ -126,15 +126,18 @@ button.add-to-cart {
     max-width: 300px;
     max-height: 300px;
     }
+    div.info p, div.info h2 {
+    width: 90%;
+    }
 }
 @media (max-width: 500px) {
-    div.image {
-        height: 200px;
-        width: 200px;
-    }
-    img {
+  div.image {
+    height: 200px;
+    width: 200px;
+  }
+  img {
     max-width: 200px;
     max-height: 200px;
-}
+  }
 }
 </style>
