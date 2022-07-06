@@ -173,8 +173,8 @@ div.cart-amount {
   width: 20px;
   border-radius: 32px;
   position: absolute;
-  right: -5px;
-  top: -5px;
+  right: -10px;
+  top: -10px;
 }
 p.cart-amount {
   font-size: 15px;
