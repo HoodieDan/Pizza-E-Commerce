@@ -63,7 +63,7 @@
                     <i class="fa-solid fa-circle-half-stroke" />
                   </button>
                   <!-- center -->
-                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'center')}" @click="centerTopping(topping)">
+                  <button class="topping-side brown" :class="{'active': getActiveSide(topping, 'full')}" @click="centerTopping(topping)">
                     <i class="fa-solid fa-circle" />
                   </button>
                   <!-- right side -->

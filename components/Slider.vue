@@ -24,7 +24,7 @@
           </template>
         </b-carousel-slide>
 
-        <!-- Slides two -->
+        <!-- Slide two -->
         <b-carousel-slide class="carousel-slide">
           <template #img>
             <img
@@ -37,7 +37,7 @@
           </template>
         </b-carousel-slide>
 
-        <!-- Slides three -->
+        <!-- Slide three -->
         <b-carousel-slide class="carousel-slide">
           <template #img>
             <img
