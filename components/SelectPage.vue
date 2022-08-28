@@ -117,7 +117,7 @@
             </h2>
           </div>
         </div>
-        <!-- cart button -->
+        <!-- cart buttons -->
         <button class="btn add-to-cart" @click="addToCart(); activeId = []">
           ADD TO CART
         </button>
