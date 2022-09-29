@@ -63,7 +63,7 @@ h2 {
 }
 div.select-modal {
     width: 800px;
-    height: 500px;
+    height: 70vh;
     background: #FFF;
     margin: auto auto;
     display: flex;

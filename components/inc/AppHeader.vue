@@ -3,8 +3,7 @@
     <div class="navis container">
       <div class="branding">
         <nuxt-link class="navbar-brand text-white" to="/">
-          <img src="../../assets/images/logo-left.png" alt="..">
-          <img src="../../assets/images/logo-right.png" alt="..">
+          <h4 class="logo">Wow<span class="green">Pizzas</span></h4>
         </nuxt-link>
       </div>
       <div class="mid-nav-links mx-auto">
@@ -86,7 +85,7 @@
       @click.self="toggleNav"
     >
       <aside class="mobile-nav">
-        <h2>{Brand}</h2>
+        <h4 class="logo">Wow<span class="green">Pizzas</span></h4>
         <hr>
         <a class="navbar-link mono block" href="#pizzas">PIZZAS</a>
         <a class="navbar-link mono block" href="#drinks">DRINKS</a>
@@ -160,6 +159,10 @@ nav {
   position: fixed;
   width: 100%;
   padding: 15px;
+}
+h4.logo {
+  font-weight: 500;
+  font-size: 1.3rem;
 }
 button.cart {
   position: relative;
@@ -370,6 +373,10 @@ span.bottom-bar {
   .sign-in {
     padding-top: 5px;
     padding-bottom: 5px;
+  }
+  h4.logo {
+    font-weight: 500;
+    font-size: 1.2rem;
   }
 }
 </style>

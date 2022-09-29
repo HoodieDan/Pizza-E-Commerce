@@ -244,7 +244,6 @@ aside.cart {
   top: 0;
   background-color: #FFF;
   background-position: center center;
-  border-radius: 5px;
   color: #5D3801;
   transform: translateX(1000px);
   z-index: 20;

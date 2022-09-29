@@ -34,6 +34,9 @@ export default {
 </script>
 
 <style>
+#app {
+  transition: all 1s;
+}
 section {
   margin-top: 4rem;
   margin-bottom: 4rem;
@@ -45,6 +48,9 @@ h5 {
 h3.index-header {
   font-family: 'Hellix-Semibold';
   margin-left: 20px;
+}
+.green {
+  color: #58EE9E;
 }
 div.card {
   margin: 20px auto 20px auto;
