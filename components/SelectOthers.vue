@@ -131,13 +131,20 @@ button.add-to-cart {
     }
 }
 @media (max-width: 500px) {
+  div.select-modal {
+      height: 350px;
+      width: 90vw;
+  }
   div.image {
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
   }
   img {
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 100px;
+    max-height: 100px;
+  }
+  h2.brown.semi-bold {
+    margin-top: 0;
   }
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="navis container">
       <div class="branding">
         <nuxt-link class="navbar-brand text-white" to="/">
-          <h4 class="logo">Wow<span class="green">Pizzas</span></h4>
+          <h4 class="logo semi-bold">Wow<span class="green">Pizza</span></h4>
         </nuxt-link>
       </div>
       <div class="mid-nav-links mx-auto">
@@ -85,7 +85,7 @@
       @click.self="toggleNav"
     >
       <aside class="mobile-nav">
-        <h4 class="logo">Wow<span class="green">Pizzas</span></h4>
+        <h4 class="logo semi-bold">Wow<span class="green">Pizza</span></h4>
         <hr>
         <a class="navbar-link mono block" href="#pizzas">PIZZAS</a>
         <a class="navbar-link mono block" href="#drinks">DRINKS</a>
@@ -375,7 +375,6 @@ span.bottom-bar {
     padding-bottom: 5px;
   }
   h4.logo {
-    font-weight: 500;
     font-size: 1.2rem;
   }
 }

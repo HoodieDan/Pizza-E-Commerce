@@ -4,7 +4,7 @@
       <div class="row">
         <div class="brandy col-lg-5 col-md-5 col-sm-12">
           <div class="brand">
-            <h4 class="logo">Wow<span class="green">Pizzas</span></h4>
+            <h4 class="logo semi-bold">Wow<span class="green">Pizza</span></h4>
             <h5>By Drew</h5>
             <p class="footer-p">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, aut?
